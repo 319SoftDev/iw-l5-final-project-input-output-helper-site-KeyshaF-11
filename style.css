@@ -12,3 +12,84 @@ body{
     height: 100vh;
 
 }
+
+
+.navbar {
+    position: absolute;
+    top: 250px;
+    width: 60%;
+    left: 4%;;
+    font-family: monospace;
+    font-size: 20px;
+;
+}
+.navbar ul {
+    list-style-type: none;
+
+    padding: 0px;
+    margin: 0px;
+    overflow: hidden;
+;
+
+}
+.navbar li {
+    float: left;
+    width: 14%;
+
+}
+
+.navbar a {
+    display: block;
+    color: black;
+    text-align: center;
+    padding: 16px;
+    text-decoration: none;
+
+}
+
+.navbar a:hover{
+    background-color: rgb(224, 133, 147);
+    border-radius: 50px;
+    color: white;
+}
+
+
+
+
+
+
+
+
+
+.navbar2 {
+    position: absolute;
+    top: 250px;
+    width: 60%;
+    right: 4%;;
+    font-family: monospace;
+    font-size: 20px;
+;
+}
+.navbar2 ul {
+    list-style-type: none;
+
+    padding: 0px;
+    margin: 0px;
+    overflow: hidden;
+;
+
+}
+.navbar2 li {
+    float: right;
+    width: 14%;
+
+}
+
+.navbar2 a {
+    display: block;
+    color: black;
+    text-align: center;
+    padding: 16px;
+    text-decoration: none;
+
+}
