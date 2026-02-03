@@ -9,7 +9,8 @@ body{
     background-color: rgb(255, 252, 253);
     display: flex;
     justify-content: center;
-    height: 100vh;
+    height: 100%;
+    flex-direction: column
 
 }
 
@@ -21,11 +22,10 @@ body{
     left: 4%;;
     font-family: monospace;
     font-size: 20px;
-;
+    
 }
 .navbar ul {
     list-style-type: none;
-
     padding: 0px;
     margin: 0px;
     overflow: hidden;
@@ -52,13 +52,6 @@ body{
     border-radius: 50px;
     color: white;
 }
-
-
-
-
-
-
-
 
 
 .navbar2 {
@@ -92,4 +85,19 @@ body{
     padding: 16px;
     text-decoration: none;
 
+}
+
+
+main{
+    width: 100%; 
+    margin: 0;
+    position: absolute;
+    height: 500px;
+    bottom: 50px;
+    padding: 50px;
+    font-size: 30px;
+    background-color: rgb(255, 223, 230);
+    
+
+    
 }
