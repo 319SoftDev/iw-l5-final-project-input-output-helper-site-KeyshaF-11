@@ -138,7 +138,7 @@ main{
     display: flex;
     flex-direction: column;
     position: relative;
-    right: 25%;
+    right: 5%;
     align-items: center;
     justify-content: center;
     gap: 15px;
@@ -158,7 +158,7 @@ main{
     justify-content: right;
     align-items: center;
 }
-span{
+.span1{
     display: flex;
     width: 30px;
     height: 30px;
@@ -171,4 +171,67 @@ span{
     align-items: center;
     justify-content: center;
     color: white;
+}
+
+.sidebar {
+    height: 100%; /* 100% Full-height */
+    width: 0; /* 0 width - change this with JavaScript */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Stay on top */
+    top: 0;
+    right: 0;
+    background-color: #ffb6c1; /* Light pink background */
+    overflow-x: hidden; /* Disable horizontal scroll */
+    transition: 0.5s; /* 0.5 second transition effect to slide in the sidebar */
+    padding-top: 60px; /* Place content 60px from the top */
+    box-shadow: -2px 0 5px rgba(0,0,0,0.2);
+}
+
+/* Sidebar links */
+.sidebar a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+
+/* Change color of links on hover */
+.sidebar a:hover {
+    color: #f1f1f1;
+    background-color: #ff69b4; /* Hot pink on hover */
+}
+
+/* Position and style the close button (top right corner) */
+.sidebar .close-btn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+/* The button to open the sidebar */
+.open-btn {
+    font-size: 20px;
+    cursor: pointer;
+    background-color: #ff69b4; /* Hot pink button */
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    position: fixed; /* Keeps button in place as you scroll */
+    right: 20px;
+    top: 200px;
+}
+
+.open-btn:hover {
+    background-color: #ffb6c1; /* Light pink on hover */
+}
+
+/* Main content styles */
+.main-content {
+    padding: 20px;
+    transition: margin-right .5s;
 }

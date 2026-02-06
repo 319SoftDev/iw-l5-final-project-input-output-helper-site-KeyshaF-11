@@ -26,7 +26,7 @@
         <ul>
             <li><a href="shopBag.html">
             <img src="img/bag.png" height="30px">
-        <span>0</span></a>
+        <span class="span1">0</span></a>
         </li>
 
             <li><a href="#user">
@@ -41,8 +41,26 @@
     </nav>
 
     <main>
+    <div class="main-content">
+        <h1>My Awesome Website</h1>
+        <p>Click the button to show the sidebar.</p>
+        <button class="open-btn" onclick="openNav()">Open Sidebar</button>
+    </div>
 
-        <h2> Your Items</p>
+    <!-- The sidebar -->
+    <div id="mySidebar" class="sidebar">
+        <a href="javascript:void(0)" class="close-btn" onclick="closeNav()">×</a>
+        <a href="#">About</a>
+        <a href="#">Services</a>
+        <a href="#">Clients</a>
+        <a href="#">Contact</a>
+    </div>        
+        
+
+
+
+
+        
     </main>
 
 
