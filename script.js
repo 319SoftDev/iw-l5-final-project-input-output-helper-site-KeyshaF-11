@@ -1,33 +1,77 @@
-const orderButton = document.querySelectorAll('.button');
+const buttons = document.querySelectorAll('.button');
 const itemCountSpan = document.querySelector('.span1');
+let cart = JSON.parse(localStorage.getItem('cart')) || {};
 
+function updateCartCount(){
+    let totalItems = 0;
+    for(let item in cart) totalItems += cart[item].quantity;
+    itemCountSpan.textContent = totalItems;
+}
+updateCartCount();
 
-// Load the saved item count from localStorage, default to 0 if not found
-let itemCount = parseInt(localStorage.getItem('itemCount')) || 0;
-
-// Display the current count when the page loads
-itemCountSpan.textContent = itemCount;
-
-orderButton.forEach(button => {
+buttons.forEach(button => {
     button.addEventListener('click', () => {
-        itemCount++;
-        itemCountSpan.textContent = itemCount;
-        // Save the updated count to localStorage
-        localStorage.setItem('itemCount', itemCount);
+        const name = button.dataset.name;
+        const price = parseFloat(button.dataset.price);
+        let quantity = parseInt(prompt(`How many ${name}s would you like?`));
+        if(isNaN(quantity) || quantity <=0){ alert("Enter a valid number!"); return; }
+        if(cart[name]) cart[name].quantity += quantity;
+        else cart[name] = {price, quantity};
+        localStorage.setItem('cart', JSON.stringify(cart));
+        updateCartCount();
+        alert(`${quantity} ${name}(s) added to your bag!`);
     });
 });
 
-console.log("running");
-
-
-/* Set the width of the sidebar to 250px and the right margin of the content to 250px */
-function openNav() {
-    document.getElementById("mySidebar").style.width = "250px";
-    document.querySelector(".main-content").style.marginRight = "250px";
+function openNav(){
+    document.getElementById("mySidebar").style.width="300px";
+    displayCart();
+}
+function closeNav(){
+    document.getElementById("mySidebar").style.width="0";
 }
 
-/* Set the width of the sidebar to 0 and the right margin of the content to 0 */
-function closeNav() {
-    document.getElementById("mySidebar").style.width = "0";
-    document.querySelector(".main-content").style.marginRight = "0";
+function displayCart(){
+    const cartItemsDiv = document.getElementById('cartItems');
+    const cartTotal = document.getElementById('cartTotal');
+    cartItemsDiv.innerHTML="";
+    let total=0;
+
+    for(let item in cart){
+        const quantity = cart[item].quantity;
+        const price = cart[item].price;
+        const itemTotal = quantity*price;
+
+        const div = document.createElement('div');
+        div.classList.add('cart-item');
+
+        const span = document.createElement('span');
+        span.textContent = `${item} x${quantity} - $${itemTotal.toFixed(2)}`;
+
+        const btn = document.createElement('button');
+        btn.textContent="Remove";
+        btn.addEventListener('click', ()=>{
+            delete cart[item];
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCartCount();
+            displayCart();
+        });
+
+        div.appendChild(span);
+        div.appendChild(btn);
+        cartItemsDiv.appendChild(div);
+
+        total += itemTotal;
+    }
+    cartTotal.textContent=total.toFixed(2);
 }
+
+// Reset cart
+document.getElementById('resetCart').addEventListener('click', ()=>{
+    if(confirm("Are you sure you want to reset your order?")){
+        cart={};
+        localStorage.setItem('cart', JSON.stringify(cart));
+        updateCartCount();
+        displayCart();
+    }
+});
