@@ -1,101 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>South American Restaurant</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>South American Restaurant - Menu</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <header>
-        <div>
-            <img src="https://t4.ftcdn.net/jpg/04/26/77/65/360_F_426776511_4DNUnOSEzVKbtqTe8HJ4ROX664x6Q5OL.jpg" width="1912px" height="240px" alt="South American Restaurant Logo" style="margin-bottom: 700px;">
-            <div style="background-color: rgb(255, 233, 239); position: absolute; top: 60px; left: 50%; transform: translateX(-50%); height: 90px; width: 500px; border-radius: 200px; text-align: center; border: 6px solid;"><h1 style="color: rgb(0, 0, 0); margin-top: 20px; font-size: 37px;">South American Restaurant</h1></div>
-        </div>
-        
-    </header>
-    <nav class="navbar">
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="menu.html">Menu</a></li>
-            <li><a href="reserve.html">Reserve</a></li>
-        </ul>
-    </nav>
-    <nav class="navbar2">
-        <ul>
-            <li><a href="shopBag.html">
-            <img src="img/bag.png" height="30px">
-        <span class="span1">0</span></a>
-        </li>
+<header>
+  <div class="header-container">
+    <img src="https://t4.ftcdn.net/jpg/04/26/77/65/360_F_426776511_4DNUnOSEzVKbtqTe8HJ4ROX664x6Q5OL.jpg" alt="Restaurant Logo">
+    <div class="title-banner">
+      <h1>South American Restaurant</h1>
+    </div>
+  </div>
+</header>
 
-            <li><a href="#user">
-                <img src="img/user.png" height="30px">
-            </a></li>
+<nav class="navbar">
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="menu.html">Menu</a></li>
+    <li><a href="reserve.html">Reserve</a></li>
+  </ul>
+</nav>
 
+<nav class="navbar2">
+  <ul>
+    <li>
+      <a href="javascript:void(0)" onclick="openNav()">
+        <img src="img/bag.png" alt="Bag"><span class="span1">0</span>
+      </a>
+    </li>
+    <li><a href="#"><img src="img/user.png" alt="User"></a></li>
+    <li><a href="#"><img src="img/find.png" alt="Search"></a></li>
+  </ul>
+</nav>
 
-            <li><a href="#find">
-                <img src="img/find.png" height="40px">
-            </a></li>
-        </ul>
-    </nav>
+<main class="page-container">
+  <div class="listProducts">
+    <div class="menu-item">
+      <img src="img/arepa.png" alt="Arepa">
+      <h3>Arepa</h3>
+      <div class="price">$3.00</div>
+      <button class="button" data-name="Arepa" data-price="3">
+        Add To Bag <img src="img/plus.png" alt="plus">
+      </button>
+    </div>
+    <div class="menu-item">
+      <img src="img/bandeja.png" alt="Bandeja Paisa">
+      <h3>Bandeja Paisa</h3>
+      <div class="price">$14.80</div>
+      <button class="button" data-name="Bandeja Paisa" data-price="14.8">
+        Add To Bag <img src="img/plus.png" alt="plus">
+      </button>
+    </div>
+    <div class="menu-item">
+      <img src="img/empanada.png" alt="Empanada">
+      <h3>Empanada</h3>
+      <div class="price">$5.00</div>
+      <button class="button" data-name="Empanada" data-price="5">
+        Add To Bag <img src="img/plus.png" alt="plus">
+      </button>
+    </div>
+    <div class="menu-item">
+      <img src="img/bolon.jpg" alt="Bolon">
+      <h3>Bolon</h3>
+      <div class="price">$6.50</div>
+      <button class="button" data-name="Bolon" data-price="6.5">
+        Add To Bag <img src="img/plus.png" alt="plus">
+      </button>
+    </div>
+  </div>
+</main>
 
-    <main>
-        <div class="listProducts">
-            <div class="menu-item">
-                <img src="img/arepa.png" alt="Arepas"style="border-radius: 10px; border: 2px solid #000;">
-                <h3>Arepas</h3>
-                <div class="price">$3.00 per Arepa</div>
-                <button class="button">Add To Bag 
-                    <img src="img/plus.png" height="40px" alt="Plus Icon" style="vertical-align: middle; margin-left: 10px; width: 40px;">
-                </button>
-            </div>
-            <div class="menu-item">
-                <img src="img/bandeja.png" alt="Arepas"style="border-radius: 10px; border: 2px solid #000;">
-                <h3>Bandeja Paisa</h3>
-                <div class="price">$14.80 per Plate</div>
-                <button class="button">Add To Bag 
-                    <img src="img/plus.png" height="40px" alt="Plus Icon" style="vertical-align: middle; margin-left: 10px; width: 40px;">
-                </button>
-            </div>
-            <div class="menu-item">
-                <img src="img/empanada.png" alt="Arepas"style="border-radius: 10px; border: 2px solid #000;">
-                <h3>Empanadas</h3>
-                <div class="price">$5.00 per 2 Empanada</div>
-                <button class="button">Add To Bag 
-                    <img src="img/plus.png" height="40px" alt="Plus Icon" style="vertical-align: middle; margin-left: 10px; width: 40px;">
-                </button>
-            </div>
+<div id="mySidebar" class="sidebar">
+  <a href="javascript:void(0)" class="close-btn" onclick="closeNav()">×</a>
+  <h2 style="text-align:center;">Your Bag</h2>
+  <div id="cartItems"></div>
+  <h3 style="text-align:center;">Total: $<span id="cartTotal">0</span></h3>
+  <button id="resetCart">Reset Order</button>
+</div>
 
-            <div class="menu-item">
-                <img src="img/bolon.jpg" alt="Arepas"style="border-radius: 10px; border: 2px solid #000;">
-                <h3>Bolon</h3>
-                <div class="price">$6.50 per Bolon</div>
-                <button class="button">Add To Bag 
-                    <img src="img/plus.png" height="40px" alt="Plus Icon" style="vertical-align: middle; margin-left: 10px; width: 40px;">
-                </button>
-            </div>            
-        </div>
- 
-
-        
-    </main>
-
-
-
-
-
-
-
-
-
-
-
-
-        </ul>
-    </nav>
-
-    <script src="script.js"></script>
-    
+<script src="script.js"></script>
 </body>
 </html>
