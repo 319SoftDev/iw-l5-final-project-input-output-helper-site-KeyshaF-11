@@ -8,6 +8,7 @@
 </head>
 <body>
 
+
 <header>
   <div class="header-container">
     <img src="https://t4.ftcdn.net/jpg/04/26/77/65/360_F_426776511_4DNUnOSEzVKbtqTe8HJ4ROX664x6Q5OL.jpg" alt="Restaurant Logo">
@@ -17,6 +18,7 @@
   </div>
 </header>
 
+
 <nav class="navbar">
   <ul>
     <li><a href="index.html">Home</a></li>
@@ -25,32 +27,45 @@
   </ul>
 </nav>
 
+
 <nav class="navbar2">
   <ul>
+    <li><a href="account.html"><img src="img/user.png" alt="User"></a></li>
     <li>
       <a href="javascript:void(0)" onclick="openNav()">
         <img src="img/bag.png" alt="Bag"><span class="span1">0</span>
       </a>
     </li>
-    <li><a href="#"><img src="img/user.png" alt="User"></a></li>
     <li><a href="#"><img src="img/find.png" alt="Search"></a></li>
   </ul>
 </nav>
 
+
 <main class="page-container">
-  <h2>Reserve a Table</h2>
-  <form>
-    <label>Name:</label><br>
-    <input type="text" placeholder="Your Name"><br><br>
-    <label>Date:</label><br>
-    <input type="date"><br><br>
-    <label>Time:</label><br>
-    <input type="time"><br><br>
-    <label>Number of People:</label><br>
-    <input type="number" min="1" value="1"><br><br>
-    <button type="submit">Reserve</button>
-  </form>
+  <div class="form-container">
+    <h2>Reserve a Table</h2>
+    <form id="reservationForm">
+      <label>Name:</label>
+      <input type="text" placeholder="Your Name" required>
+
+
+      <label>Date:</label>
+      <input type="date" required>
+
+
+      <label>Time:</label>
+      <input type="time" required>
+
+
+      <label>Number of People:</label>
+      <input type="number" min="1" value="1" required>
+
+
+      <button type="submit">Reserve</button>
+    </form>
+  </div>
 </main>
+
 
 <div id="mySidebar" class="sidebar">
   <a href="javascript:void(0)" class="close-btn" onclick="closeNav()">×</a>
@@ -60,6 +75,9 @@
   <button id="resetCart">Reset Order</button>
 </div>
 
+
 <script src="script.js"></script>
 </body>
 </html>
+
+

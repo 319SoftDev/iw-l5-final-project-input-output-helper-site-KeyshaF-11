@@ -1,32 +1,39 @@
 const buttons = document.querySelectorAll('.button');
 const itemCountSpan = document.querySelector('.span1');
 
+
 let cart = JSON.parse(localStorage.getItem('cart')) || {};
 
-// ---------- UPDATE RED BAG NUMBER ----------
+
+// ---------- UPDATE BAG NUMBER ----------
 function updateCartCount() {
     let totalItems = 0;
     for (let item in cart) {
         totalItems += cart[item].quantity;
     }
-    itemCountSpan.textContent = totalItems;
+    if(itemCountSpan) itemCountSpan.textContent = totalItems;
 }
+
 
 // ---------- DISPLAY CART ----------
 function displayCart() {
     const cartItemsDiv = document.getElementById('cartItems');
     const cartTotal = document.getElementById('cartTotal');
 
-    cartItemsDiv.innerHTML = "";
 
+    if(!cartItemsDiv || !cartTotal) return;
+
+
+    cartItemsDiv.innerHTML = "";
     let total = 0;
+
 
     for (let item in cart) {
         const quantity = cart[item].quantity;
         const price = cart[item].price;
         const itemTotal = quantity * price;
 
-        // Create container for each item
+
         const div = document.createElement('div');
         div.classList.add('cart-item');
         div.style.display = 'flex';
@@ -37,11 +44,11 @@ function displayCart() {
         div.style.backgroundColor = 'rgba(255,255,255,0.2)';
         div.style.borderRadius = '8px';
 
-        // Item text
+
         const span = document.createElement('span');
         span.textContent = `${item} x${quantity} - $${itemTotal.toFixed(2)}`;
 
-        // Remove button
+
         const btn = document.createElement('button');
         btn.textContent = "Remove";
         btn.style.backgroundColor = '#b00000';
@@ -57,15 +64,19 @@ function displayCart() {
             displayCart();
         });
 
+
         div.appendChild(span);
         div.appendChild(btn);
         cartItemsDiv.appendChild(div);
 
+
         total += itemTotal;
     }
 
+
     cartTotal.textContent = total.toFixed(2);
 }
+
 
 // ---------- ADD TO BAG ----------
 buttons.forEach(button => {
@@ -73,11 +84,13 @@ buttons.forEach(button => {
         const name = button.dataset.name;
         const price = parseFloat(button.dataset.price);
 
+
         let quantity = parseInt(prompt(`How many ${name}s would you like?`));
         if (isNaN(quantity) || quantity <= 0) {
             alert("Enter a valid number!");
             return;
         }
+
 
         if (cart[name]) {
             cart[name].quantity += quantity;
@@ -85,21 +98,24 @@ buttons.forEach(button => {
             cart[name] = { price, quantity };
         }
 
+
         localStorage.setItem('cart', JSON.stringify(cart));
         updateCartCount();
-        displayCart(); // <-- show immediately
+        displayCart();
         alert(`${quantity} ${name}(s) added to your bag!`);
     });
 });
 
+
 // ---------- SIDEBAR ----------
 function openNav() {
     document.getElementById("mySidebar").style.width = "300px";
-    displayCart(); // just in case
+    displayCart();
 }
 function closeNav() {
     document.getElementById("mySidebar").style.width = "0";
 }
+
 
 // ---------- RESET CART ----------
 const resetBtn = document.getElementById('resetCart');
@@ -114,6 +130,48 @@ if (resetBtn) {
     });
 }
 
-// ---------- INITIALIZE ----------
+
+// ---------- INITIALIZE CART ----------
 updateCartCount();
-displayCart(); // display items immediately on page load
+displayCart();
+
+
+// --------------------- RESERVATION FORM ---------------------
+const reservationForm = document.getElementById('reservationForm');
+if (reservationForm) {
+    reservationForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        alert("Thank you! Your reservation has been made.");
+        reservationForm.reset();
+    });
+}
+
+
+// --------------------- ACCOUNT FORM ---------------------
+const accountForm = document.getElementById('accountForm');
+if(accountForm){
+    // Prefill with stored data if available
+    const storedAccount = JSON.parse(localStorage.getItem('account')) || {};
+    accountForm.querySelector('input[placeholder="Your Name"]').value = storedAccount.name || '';
+    accountForm.querySelector('input[placeholder="Your Email"]').value = storedAccount.email || '';
+    accountForm.querySelector('input[placeholder="Phone Number"]').value = storedAccount.phone || '';
+    accountForm.querySelector('input[placeholder="Your Address"]').value = storedAccount.address || '';
+
+
+    accountForm.addEventListener('submit', (e)=>{
+        e.preventDefault();
+
+
+        const name = accountForm.querySelector('input[placeholder="Your Name"]').value;
+        const email = accountForm.querySelector('input[placeholder="Your Email"]').value;
+        const phone = accountForm.querySelector('input[placeholder="Phone Number"]').value;
+        const address = accountForm.querySelector('input[placeholder="Your Address"]').value;
+
+
+        const accountData = { name, email, phone, address };
+        localStorage.setItem('account', JSON.stringify(accountData));
+
+
+        alert("Your information has been updated!");
+    });
+}
