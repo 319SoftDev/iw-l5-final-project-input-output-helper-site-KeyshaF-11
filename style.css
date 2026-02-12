@@ -76,14 +76,22 @@ header img {
 }
 
 
-.navbar a, .navbar2 a {
+.navbar a{
     text-decoration: none;
     color: black;
-    padding: 10px 16px;
+    position: relative;
+    top: 10px;
+    padding: 10px 10px;
     border-radius: 20px;
-    transition: 0.3s;
+ 
 }
-
+.navbar2 a {
+    text-decoration: none;
+    color: black; 
+    padding: 10px 10px;
+    border-radius: 20px;
+ 
+}
 
 .navbar a:hover, .navbar2 a:hover {
     background: #e08593;
@@ -314,8 +322,8 @@ main.page-container {
 
 /* ================= RESPONSIVE ================= */
 @media(max-width:768px){
-    .navbar ul {flex-direction: column; gap: 10px;}
-    .navbar2 ul {justify-content: center; padding-right: 0;}
+    .navbar ul {flex-direction: column; gap: 40px; align-items: center;}
+    .navbar2 ul {justify-content: center; padding-right: 0; padding-top:40px;}
     .listProducts {flex-direction: column; align-items: center;}
     .menu-item {width: 90%;}
     .title-banner h1 {font-size: 24px;}
@@ -332,3 +340,98 @@ main.page-container {
 }
 
 
+/* INTRO IMAGE */
+.intro-image {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+
+.intro-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 15px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+}
+
+
+/* SOUTH AMERICA HIGHLIGHTS */
+.south-america-highlights {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 40px;
+}
+
+
+.highlight {
+    max-width: 300px;
+    text-align: center;
+}
+
+
+.highlight img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 15px;
+    margin-bottom: 10px;
+}
+
+
+/* STORY SECTION */
+.story {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 0 20px;
+    text-align: center;
+}
+
+
+.story h3 {
+    font-size: 28px;
+    color: #b00000;
+    margin-bottom: 20px;
+}
+
+
+/* RESPONSIVE ADJUSTMENTS */
+@media(max-width:768px){
+    .south-america-highlights {
+        flex-direction: column;
+        align-items: center;
+    }
+
+
+    .highlight img {
+        height: 180px;
+    }
+
+
+    .story h3 {
+        font-size: 24px;
+    }
+}
+
+
+.content-with-image {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+
+.content-with-image img {
+  width: 400px; /* adjust size as needed */
+  border-radius: 15px;
+  float: right;
+}
+
+
+.content-with-image p {
+  flex: 1;
+  text-align: justify;
+}

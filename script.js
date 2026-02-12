@@ -5,7 +5,7 @@ const itemCountSpan = document.querySelector('.span1');
 let cart = JSON.parse(localStorage.getItem('cart')) || {};
 
 
-// ---------- UPDATE BAG NUMBER ----------
+//UPDATE BAG NUMBER
 function updateCartCount() {
     let totalItems = 0;
     for (let item in cart) {
@@ -15,7 +15,7 @@ function updateCartCount() {
 }
 
 
-// ---------- DISPLAY CART ----------
+// DISPLAY CART 
 function displayCart() {
     const cartItemsDiv = document.getElementById('cartItems');
     const cartTotal = document.getElementById('cartTotal');
@@ -78,7 +78,7 @@ function displayCart() {
 }
 
 
-// ---------- ADD TO BAG ----------
+// ADD TO BAG 
 buttons.forEach(button => {
     button.addEventListener('click', () => {
         const name = button.dataset.name;
@@ -107,7 +107,7 @@ buttons.forEach(button => {
 });
 
 
-// ---------- SIDEBAR ----------
+//SIDEBAR 
 function openNav() {
     document.getElementById("mySidebar").style.width = "300px";
     displayCart();
@@ -117,7 +117,7 @@ function closeNav() {
 }
 
 
-// ---------- RESET CART ----------
+//RESET CART 
 const resetBtn = document.getElementById('resetCart');
 if (resetBtn) {
     resetBtn.addEventListener('click', () => {
@@ -131,12 +131,12 @@ if (resetBtn) {
 }
 
 
-// ---------- INITIALIZE CART ----------
+//INITIALIZE CART 
 updateCartCount();
 displayCart();
 
 
-// --------------------- RESERVATION FORM ---------------------
+// RESERVATION FORM 
 const reservationForm = document.getElementById('reservationForm');
 if (reservationForm) {
     reservationForm.addEventListener('submit', (e) => {
@@ -147,10 +147,10 @@ if (reservationForm) {
 }
 
 
-// --------------------- ACCOUNT FORM ---------------------
+// ACCOUNT FORM 
 const accountForm = document.getElementById('accountForm');
 if(accountForm){
-    // Prefill with stored data if available
+
     const storedAccount = JSON.parse(localStorage.getItem('account')) || {};
     accountForm.querySelector('input[placeholder="Your Name"]').value = storedAccount.name || '';
     accountForm.querySelector('input[placeholder="Your Email"]').value = storedAccount.email || '';
