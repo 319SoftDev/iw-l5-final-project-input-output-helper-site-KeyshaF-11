@@ -254,7 +254,16 @@ main.page-container {
     cursor: pointer;
 }
 
+#purchaseBtn{ 
+    top: 40px;
+    margin: 40px;
+    padding: 10px;
+    background: #6df688;
+    color: rgb(0, 0, 0);
+    border: none;
+    border-radius: 10px;
 
+}
 /* ================= FORMS ================= */
 .form-container {
     max-width: 700px;

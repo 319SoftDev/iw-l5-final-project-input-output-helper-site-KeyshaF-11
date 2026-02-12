@@ -175,3 +175,23 @@ if(accountForm){
         alert("Your information has been updated!");
     });
 }
+
+// PURCHASE BUTTON
+const purchaseBtn = document.getElementById('purchaseBtn');
+if(purchaseBtn){
+    purchaseBtn.addEventListener('click', ()=>{ 
+        if(Object.keys(cart).length === 0){
+            alert("Your bag is empty!");
+            return;
+        }else {       
+            alert("Thank you for your purchase! Your order is being processed.");
+            cart = {};
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCartCount();
+            displayCart();
+            
+        }
+
+
+    });
+}
