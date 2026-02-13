@@ -15,7 +15,7 @@ body {
 }
 
 
-/* ================= HEADER ================= */
+/*  HEADER  */
 header {
     position: relative;
 }
@@ -51,7 +51,7 @@ header img {
 }
 
 
-/* ================= NAVBARS ================= */
+/*  NAVBARS  */
 .navbar, .navbar2 {
     width: 100%;
     background: #ffe9ef;
@@ -104,7 +104,7 @@ header img {
 }
 
 
-/* ================= BAG NUMBER ================= */
+/*  BAG NUMBER  */
 .span1 {
     display: flex;
     width: 24px;
@@ -121,7 +121,7 @@ header img {
 }
 
 
-/* ================= MAIN CONTENT ================= */
+/*  MAIN CONTENT  */
 main.page-container {
     flex: 1;
     padding: 40px 20px;
@@ -130,7 +130,7 @@ main.page-container {
 }
 
 
-/* ================= MENU ITEMS ================= */
+/*  MENU ITEMS  */
 .listProducts {
     display: flex;
     flex-wrap: wrap;
@@ -167,7 +167,7 @@ main.page-container {
 }
 
 
-/* ================= BUTTONS ================= */
+/*  BUTTONS  */
 .button {
     margin-top: 12px;
     padding: 6px 12px;
@@ -195,8 +195,19 @@ main.page-container {
     height: 18px;
 }
 
+#purchaseBtn{ 
+    top: 40px;
+    margin: 40px;
+    padding: 10px;
+    background: #6df688;
+    color: rgb(0, 0, 0);
+    border: none;
+    border-radius: 10px;
 
-/* ================= SIDEBAR ================= */
+}
+
+
+/*  SIDEBAR  */
 .sidebar {
     height: 100%;
     width: 0;
@@ -254,17 +265,8 @@ main.page-container {
     cursor: pointer;
 }
 
-#purchaseBtn{ 
-    top: 40px;
-    margin: 40px;
-    padding: 10px;
-    background: #6df688;
-    color: rgb(0, 0, 0);
-    border: none;
-    border-radius: 10px;
 
-}
-/* ================= FORMS ================= */
+/*  FORMS  */
 .form-container {
     max-width: 700px;
     width: 90%;
@@ -329,7 +331,7 @@ main.page-container {
 }
 
 
-/* ================= RESPONSIVE ================= */
+/*  RESPONSIVE  */
 @media(max-width:768px){
     .navbar ul {flex-direction: column; gap: 40px; align-items: center;}
     .navbar2 ul {justify-content: center; padding-right: 0; padding-top:40px;}
