@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>South American Restaurant - Home</title>
+  <title>South American Restaurant - Menu</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -42,27 +42,41 @@
 
 
 <main class="page-container">
-  <h2>Welcome to our Restaurant!</h2>
-  <p>Enjoy authentic South American dishes made with love and fresh ingredients.</p>
-
-
-  <div class="content-with-image">
-    <p>
-      Our chefs bring you the flavors of South America right to your table. From the tangy ceviches of Peru
-      to the hearty feijoadas of Brazil, every dish is crafted with passion.
-      Experience a culinary journey that celebrates tradition, culture, and the joy of sharing meals with loved ones.<br><br>
-      <b>Check out our menu or reserve a table online to experience a taste of South America!</b>
-
-    </p>
-    
-    <img src="https://thumbs.dreamstime.com/b/south-america-sketch-concept-colored-continent-shape-travel-symbols-vector-illustration-47199196.jpg"
-         alt="South America Map">
+  <div class="listProducts">
+    <div class="menu-item">
+      <img src="img/arepa.png" alt="Arepa">
+      <h3>Arepa</h3>
+      <div class="price">$3.00</div>
+      <button class="button" data-name="Arepa" data-price="3">
+        Add To Bag <img src="img/plus.png" alt="plus">
+      </button>
+    </div>
+    <div class="menu-item">
+      <img src="img/bandeja.png" alt="Bandeja Paisa">
+      <h3>Bandeja Paisa</h3>
+      <div class="price">$14.80</div>
+      <button class="button" data-name="Bandeja Paisa" data-price="14.8">
+        Add To Bag <img src="img/plus.png" alt="plus">
+      </button>
+    </div>
+    <div class="menu-item">
+      <img src="img/empanada.png" alt="Empanada">
+      <h3>Empanada</h3>
+      <div class="price">$5.00</div>
+      <button class="button" data-name="Empanada" data-price="5">
+        Add To Bag <img src="img/plus.png" alt="plus">
+      </button>
+    </div>
+    <div class="menu-item">
+      <img src="img/bolon.jpg" alt="Bolon">
+      <h3>Bolon</h3>
+      <div class="price">$6.50</div>
+      <button class="button" data-name="Bolon" data-price="6.5">
+        Add To Bag <img src="img/plus.png" alt="plus">
+      </button>
+    </div>
   </div>
-
-
 </main>
-
-
 
 
 <div id="mySidebar" class="sidebar">
@@ -73,7 +87,6 @@
   <button id="resetCart">Reset Order</button>
   <button id="purchaseBtn">Purchase</button>
 </div>
-
 
 
 <script src="script.js"></script>
