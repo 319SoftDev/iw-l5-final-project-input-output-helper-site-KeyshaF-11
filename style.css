@@ -61,7 +61,7 @@ header img {
 .navbar ul {
     display: flex;
     justify-content: center;
-    gap: 40px;
+    gap: 50px;
     list-style: none;
     padding: 12px 0;
 }
@@ -70,7 +70,7 @@ header img {
 .navbar2 ul {
     display: flex;
     justify-content: flex-end;
-    gap: 18px;
+    gap: 38px;
     list-style: none;
     padding: 12px 25px 12px 0;
 }
@@ -80,7 +80,8 @@ header img {
     text-decoration: none;
     color: black;
     position: relative;
-    top: 10px;
+    top: 30px;
+    right: 500px;
     padding: 10px 10px;
     border-radius: 20px;
  
