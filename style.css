@@ -8,8 +8,8 @@
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background: #fff;
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
     min-height: 100vh;
     color: #333;
 }
@@ -68,8 +68,10 @@ header img {
 
 
 .navbar2 ul {
-    display: flex;
-    justify-content: flex-end;
+    display: grid;
+    justify-content: end;
+    grid-column: auto;
+    
     gap: 38px;
     list-style: none;
     padding: 12px 25px 12px 0;
@@ -133,9 +135,9 @@ main.page-container {
 
 /*  MENU ITEMS  */
 .listProducts {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    grid-column: auto;
     gap: 40px;
 }
 
