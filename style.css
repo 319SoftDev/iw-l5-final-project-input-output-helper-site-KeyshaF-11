@@ -62,10 +62,11 @@ header img {
 .navbar ul {
    display: grid;
    grid-auto-flow: column;
-   justify-content: center;
+   justify-content: left;
    gap: 50px;
    list-style: none;
-   padding: 12px 0;
+   margin-left: 300px;
+   padding: 12px 25px 12px 0;
 }
 
 
@@ -231,12 +232,16 @@ main.page-container {
    position: fixed;
    top: 0;
    right: 0;
-   background-color: #ffb6c1;
+   background-color: #ffd4da;
    overflow-x: hidden;
    transition: 0.4s;
    padding-top: 60px;
    box-shadow: -4px 0 10px rgba(0,0,0,0.2);
    z-index: 1000;
+   border-radius: 100px 0 0 100px;
+   box-shadow: #231a1a 0px 28px 50px;
+
+
 }
 
 
