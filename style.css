@@ -128,19 +128,21 @@ header img {
 
 
 /* MAIN CONTENT */
+
 main.page-container {
    padding: 40px 20px;
-   max-width: 1200px;
+   max-width: 90%;
    margin: 0 auto;
 }
 
 
 /* MENU LIST - SINGLE COLUMN */
 .listProducts {
+   width: 100%;
    display: grid;
-
-   grid-template-columns: 30% 30% 30% 30%;
-   justify-content: center;
+   outline: 1px blue solid;
+   grid-template-columns: repeat((1250px, 1fr));
+   justify-content: space-between;
 
     gap: 40px;
     margin-top: 40px;
@@ -149,14 +151,16 @@ main.page-container {
 
 /* MENU ITEM */
 .menu-item {
-   display: grid;
-   grid-template-rows: auto auto auto auto;
+   /* display: grid;
+   grid-template-rows: auto auto auto auto; */
+   display: flex;
+   flex-direction: column;
    justify-items: center;
    align-items: center;
+   outline: 1px red solid;
 
-
-   width: 80%;
-   max-width: 500px;
+   /* 0 */
+   /* max-width: 500px; */
 
 
    padding: 20px;
