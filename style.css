@@ -67,15 +67,24 @@ header img {
    justify-content: left;
    gap: 50px;
    list-style: none;
-   margin-left: 300px;
+   margin-left: 200px;
+   margin-top: 30px;
    padding: 12px 25px 12px 0;
+
 }
 
+.navbar a, .navbar img {
+   text-decoration: none;
+   color: black;
+   top: 100px;
+
+
+}
 
 .navbar2 ul {
    display: grid;
    grid-auto-flow: column;
-   justify-content: end;
+   justify-content: right;
    gap: 38px;
    list-style: none;
    padding: 12px 25px 12px 0;
@@ -87,6 +96,7 @@ header img {
    color: black;
    padding: 10px;
    border-radius: 20px;
+
 }
 
 
@@ -98,12 +108,20 @@ header img {
 }
 
 
-.navbar a:hover, .navbar2 a:hover {
+.navbar2 a:hover {
    background: #e08593;
+   padding: 10px; 
+   border-radius: 10px;
    color: white;
 }
 
+.navbar a:hover{
+   background: #e08593;
+   padding: 20px; 
+   border-radius: 10px;
+   color: white;
 
+}
 .navbar2 img {
    height: 28px;
 }
@@ -142,7 +160,7 @@ main.page-container {
 .listProducts {
    width: 100%;
    display: grid;
-   outline: 1px blue solid;
+   /* outline: 1px blue solid; */
    grid-template-columns: 1fr 1fr 1fr 1fr;
    justify-content: space-between;
 
@@ -159,7 +177,7 @@ main.page-container {
    flex-direction: column;
    justify-items: center;
    align-items: center;
-   outline: 1px red solid;
+   /* outline: 1px red solid; */
 
    /* 0 */
    /* max-width: 500px; */
@@ -312,7 +330,7 @@ main.page-container {
    text-align: center;
    font-size: 32px;
    margin-bottom: 30px;
-   color: #b00000;
+   color: #000000;
 }
 
 
@@ -404,14 +422,15 @@ main.page-container {
 /* RESPONSIVE */
 @media(max-width:768px){
    .navbar ul {
-       grid-auto-flow: row;
-       gap: 40px;
-       justify-items: center;
+       grid-auto-flow: column;
+       gap: 0px;
+       /* justify-items: center;
+       justify-content: center; */
    }
 
 
    .navbar2 ul {
-       justify-content: center;
+       justify-content: right;
        padding-top: 0px;
    }
 
@@ -422,7 +441,7 @@ main.page-container {
 
 
    .menu-item {
-       width: 90%;
+       width: 100%;
    }
 
 
