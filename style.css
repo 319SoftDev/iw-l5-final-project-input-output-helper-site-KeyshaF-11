@@ -55,19 +55,25 @@ header img {
 
 
 /* NAVBARS */
-.navbar, .navbar2 {
+.navbar{
    width: 100%;
    background: #ffe9ef;
+
+
 }
 
 
+
+
+
 .navbar ul {
-   display: grid;
-   grid-auto-flow: column;
+   display: flex;
+
+   flex-direction: rows;
    justify-content: left;
-   gap: 50px;
+   gap: 40px;
    list-style: none;
-   margin-left: 200px;
+   margin-left: 70px;
    margin-top: 30px;
    padding: 12px 25px 12px 0;
 
@@ -81,26 +87,21 @@ header img {
 
 }
 
-.navbar2 ul {
+.navbar .ul2 {
    display: grid;
    grid-auto-flow: column;
    justify-content: right;
    gap: 38px;
    list-style: none;
-   padding: 12px 25px 12px 0;
-}
+   margin-right: 70px;
+   margin-top: -40px;
 
-
-.navbar a {
-   text-decoration: none;
-   color: black;
-   padding: 10px;
-   border-radius: 20px;
 
 }
 
 
-.navbar2 a {
+
+.ul2 a {
    text-decoration: none;
    color: black;
    padding: 10px;
@@ -108,7 +109,7 @@ header img {
 }
 
 
-.navbar2 a:hover {
+.ul2 a:hover {
    background: #e08593;
    padding: 10px; 
    border-radius: 10px;
@@ -122,7 +123,7 @@ header img {
    color: white;
 
 }
-.navbar2 img {
+.ul2 img {
    height: 28px;
 }
 
@@ -456,12 +457,12 @@ main.page-container {
 }
 
 
-/* testing */
+/* MAP */
 .test{
    position: relative;
    top: 69px;
    left: 60px;
-   height: 69px;
+   height: 100px;
    width: 580px;
    background-color: rgb(255, 255, 255);
 }
