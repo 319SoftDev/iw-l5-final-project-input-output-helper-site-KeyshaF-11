@@ -466,3 +466,16 @@ main.page-container {
    width: 580px;
    background-color: rgb(255, 255, 255);
 }
+
+footer {
+   background: #ffe9ef;
+   text-align: center;
+   padding: 20px;
+   margin-top: 40px;
+   border-bottom: 6px solid #af6471;
+   border-radius: 80px;
+   max-width: 600px;
+   width: 90%;
+   margin-left: auto;
+   margin-right: auto;
+}
