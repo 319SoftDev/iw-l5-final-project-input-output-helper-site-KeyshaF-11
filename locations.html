@@ -53,8 +53,28 @@
 <!-- class="page-container" -->
 <main >
 
-  <iframe src="https://www.google.com/maps/d/embed?mid=1_fAYYAzhjApZjDPPPQhaO6iXP3vn3eA&ehbc=2E312F" width="500%" height="500%"></iframe>
+  <iframe src="https://www.google.com/maps/d/embed?mid=1_fAYYAzhjApZjDPPPQhaO6iXP3vn3eA&ehbc=2E312F&z=10&ll=40.7483, -73.9856" width="500px" height="500px"></iframe>
   <div class="test"></div>
+  <script>
+
+    console.log("Script loaded successfully.");
+    const getLocationButton = document.getElementById('getLocation');
+    const resultElement = document.getElementById('result');
+    getLocationButton.addEventListener('click', () => {
+    console.log("Get Location button clicked.");
+    if ("geolocation" in navigator) {
+    navigator.geolocation.getCurrentPosition((position) => {
+    const latitude = position.coords.latitude;
+    const longitude = position.coords.longitude;
+    resultElement.textContent = `Latitude: ${latitude}, Longitude: ${longitude}`;
+    console.log(`Location obtained: Latitude ${latitude}, Longitude ${longitude}`);
+    });
+    } else {
+    resultElement.textContent = "Geolocation is not supported by your browser.";
+    console.log("Geolocation is not supported by this browser.");
+    }
+    });
+  </script>
 
 </main>
 
