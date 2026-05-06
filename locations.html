@@ -50,24 +50,31 @@
 </nav>
 
 
-<main class="page-container">
-  <h2>Welcome to our Restaurant!</h2>
-  <p>Enjoy authentic South American dishes made with love and fresh ingredients.</p>
+<!-- class="page-container" -->
+<main >
 
+  <iframe src="https://www.google.com/maps/d/embed?mid=1_fAYYAzhjApZjDPPPQhaO6iXP3vn3eA&ehbc=2E312F&z=10&ll=40.7483, -73.9856" width="100%" height="500px"></iframe>
+  <div class="test"></div>
+  <script>
 
-  <div class="content-with-image">
-    <p>
-      Our chefs bring you the flavors of South America right to your table. From the tangy ceviches of Peru
-      to the hearty feijoadas of Brazil, every dish is crafted with passion.
-      Experience a culinary journey that celebrates tradition, culture, and the joy of sharing meals with loved ones.<br><br>
-      <b>Check out our menu or reserve a table online to experience a taste of South America!</b>
-
-    </p>
-    
-    <img src="https://thumbs.dreamstime.com/b/south-america-sketch-concept-colored-continent-shape-travel-symbols-vector-illustration-47199196.jpg"
-         alt="South America Map">
-  </div>
-
+    console.log("Script loaded successfully.");
+    const getLocationButton = document.getElementById('getLocation');
+    const resultElement = document.getElementById('result');
+    getLocationButton.addEventListener('click', () => {
+    console.log("Get Location button clicked.");
+    if ("geolocation" in navigator) {
+    navigator.geolocation.getCurrentPosition((position) => {
+    const latitude = position.coords.latitude;
+    const longitude = position.coords.longitude;
+    resultElement.textContent = `Latitude: ${latitude}, Longitude: ${longitude}`;
+    console.log(`Location obtained: Latitude ${latitude}, Longitude ${longitude}`);
+    });
+    } else {
+    resultElement.textContent = "Geolocation is not supported by your browser.";
+    console.log("Geolocation is not supported by this browser.");
+    }
+    });
+  </script>
 
 </main>
 
@@ -86,6 +93,8 @@
 <footer>
   <p>&copy; 2024 Salsa Rosada. All rights reserved.</p>
 </footer>
+
+
 
 <script src="script.js"></script>
 </body>
