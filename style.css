@@ -178,7 +178,7 @@ header img {
 
 
   position: absolute;
-  margin-left: 16px;
+  margin-left: 22px;
   margin-top: -8px;
 }
 
@@ -454,7 +454,6 @@ main.page-container {
 
 
 
-/* CONTENT WITH IMAGE */
 .content-with-image {
   display: grid;
   grid-template-columns: 1fr 400px;
@@ -481,7 +480,6 @@ main.page-container {
 
 
 
-/* INTRO IMAGE */
 .intro-image {
   display: grid;
   justify-content: center;
@@ -491,7 +489,6 @@ main.page-container {
 
 
 
-/* HIGHLIGHTS */
 .south-america-highlights {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -511,7 +508,6 @@ main.page-container {
 
 
 
-/* STORY */
 .story {
   max-width: 800px;
   margin: 50px auto;
@@ -522,21 +518,18 @@ main.page-container {
 
 
 
-/* ======================== */
-/*     RESPONSIVE MOBILE    */
-/* ======================== */
+/* RESPONSIVE MOBILE */
+
 @media(max-width: 768px){
 
 
-  /* --- HEADER BACKGROUND IMAGE --- */
   header .header-container > img {
-     height: 200px; /* give a bit more room for the title + decorative elements */
+     height: 200px;
   }
 
 
-  /* --- TITLE BANNER --- */
   .title-banner {
-     width: 55%;      /* narrower so the wink and QR have room on the sides */
+     width: 55%;      
      padding: 10px 14px;
      border-radius: 24px;
   }
@@ -547,7 +540,6 @@ main.page-container {
   }
 
 
-  /* --- WINK mascot: bring it in from the right so it stays on screen --- */
   .title-banner > img[alt="Restaurant Logo"] {
      width: 110px !important;
      height: 70px !important;
@@ -556,7 +548,6 @@ main.page-container {
   }
 
 
-  /* --- QR CODE link: bring it in from the left so it stays on screen --- */
   .title-banner > a {
      width: 70px !important;
      height: 70px !important;
@@ -565,7 +556,7 @@ main.page-container {
   }
 
 
-  /* --- NAVBAR: one clean unified icon bar --- */
+  /*  NAVBAR:  */
   .navbar {
      display: flex;
      flex-direction: row;
@@ -577,7 +568,6 @@ main.page-container {
   }
 
 
-  /* Main nav links: icons only, no text labels */
   .navbar ul {
      display: flex;
      flex-direction: row;
@@ -591,7 +581,6 @@ main.page-container {
   }
 
 
-  /* Hide text, keep icon — font-size: 0 collapses the text node */
   .navbar ul li a {
      display: flex;
      flex-direction: column;
@@ -603,14 +592,12 @@ main.page-container {
   }
 
 
-  /* Hover still works — restore color on the element, text stays hidden */
   .navbar ul li a:hover {
      padding: 6px 14px;
      border-radius: 12px;
   }
 
 
-  /* Nav icons: uniform size */
   .navbar ul li a img {
      height: 30px !important;
      width: 30px !important;
@@ -618,7 +605,6 @@ main.page-container {
   }
 
 
-  /* Icon row (ul2): sits right of the main nav in the same bar */
   .navbar .ul2 {
      display: flex !important;
      flex-direction: row !important;
@@ -645,7 +631,6 @@ main.page-container {
   }
 
 
-  /* Divider between the two groups */
   .navbar ul:first-of-type {
      border-right: 2px solid #f0b8c2;
      margin-right: 4px;
@@ -653,14 +638,12 @@ main.page-container {
   }
 
 
-  /* Keep bag badge positioned correctly */
   .span1 {
-     margin-left: 14px;
-     margin-top: -7px;
+     margin-left: 16px;
+     margin-top: 23px;
   }
 
 
-  /* --- ADD TO BAG BUTTONS: smaller on mobile --- */
   .button {
      padding: 4px 8px;
      font-size: 11px;
@@ -675,7 +658,6 @@ main.page-container {
   }
 
 
-  /* --- MENU GRID: 2 columns on tablet/phone --- */
   .listProducts {
      grid-template-columns: 1fr 1fr;
      gap: 20px;
@@ -693,31 +675,27 @@ main.page-container {
   }
 
 
-  /* --- HOME PAGE content block --- */
   .content-with-image {
      grid-template-columns: 1fr;
   }
 
 
   .content-with-image img {
-     width: 100% !important;
+     width: 100%;
      height: auto;
   }
 
 
-  /* --- FORMS --- */
   .form-container {
      padding: 24px 18px;
   }
 
 
-  /* --- SIDEBAR: wider on phone --- */
   .sidebar {
      border-radius: 30px 0 0 30px;
   }
 
 
-  /* --- LOYALTY TIERS: 2 cols on phone --- */
   .loyalty-tiers {
      grid-template-columns: 1fr 1fr;
      gap: 16px;
@@ -731,14 +709,13 @@ main.page-container {
   }
 
 
-  /* --- PAST ORDERS --- */
+  /*  PAST ORDERS  */
   .pastOrder {
      grid-template-columns: 1fr 1fr;
   }
 }
 
 
-/* Extra small phones (under 480px): drop to 1 col for menu */
 @media(max-width: 480px){
   .listProducts {
      grid-template-columns: 1fr;
@@ -765,19 +742,18 @@ main.page-container {
   }
 
 
-  /* On very small phones, slightly shrink decorative images further */
   .title-banner > img[alt="Restaurant Logo"] {
-     width: 80px !important;
-     height: 55px !important;
-     right: -48px !important;
-     bottom: -40px !important;
+     width: 80px;
+     height: 55px;
+     right: -48px;
+     bottom: -40px;
   }
 
 
   .title-banner > a {
-     width: 55px !important;
-     height: 55px !important;
-     left: -38px !important;
+     width: 55px;
+     height: 55px;
+     left: -38px;
   }
 }
 
@@ -831,9 +807,7 @@ iframe {
 }
 
 
-/* ======================== */
-/*     LOYALTY PAGE         */
-/* ======================== */
+
 
 
 .loyalty-hero {
@@ -850,12 +824,11 @@ iframe {
 
 .loyalty-hero p {
   font-size: 1rem;
-  color: #555;
+  color: #0c0c0c;
   margin-top: 8px;
 }
 
 
-/* Points counter bar */
 .points-bar-container {
   max-width: 700px;
   margin: 30px auto;
@@ -901,11 +874,10 @@ iframe {
   display: flex;
   justify-content: space-between;
   font-size: 12px;
-  color: #888;
+  color: #1f1f1f;
 }
 
 
-/* Tiers grid */
 .loyalty-tiers {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
