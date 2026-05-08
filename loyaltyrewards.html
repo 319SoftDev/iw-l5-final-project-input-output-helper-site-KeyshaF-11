@@ -1,92 +1,224 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>South American Restaurant - Home</title>
-  <link rel="stylesheet" href="style.css">
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Salsa Rosada - Loyalty Rewards</title>
+ <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 
 <header>
-  <div class="header-container">
-
-    <img src="https://t4.ftcdn.net/jpg/04/26/77/65/360_F_426776511_4DNUnOSEzVKbtqTe8HJ4ROX664x6Q5OL.jpg" alt="Restaurant Logo">
-    <div class="title-banner">
-      <img src="img/wink.png" alt="Restaurant Logo" style="position: absolute; bottom: -100px; right: -200px; width: 350px; height: 210px;">
-      <img src="img/QR.png" alt="QR Code" style="position: absolute; bottom: -30px; left: -400px; width: 150px; height: 150px; border-radius: 10px; border: 5px solid #ffffff;">
-
-      <h1>Salsa Rosada</h1>
-    </div>
-  </div>
+ <div class="header-container">
+   <img src="https://t4.ftcdn.net/jpg/04/26/77/65/360_F_426776511_4DNUnOSEzVKbtqTe8HJ4ROX664x6Q5OL.jpg" alt="Restaurant Logo">
+   <div class="title-banner">
+     <img src="img/wink.png" alt="Restaurant Logo" style="position: absolute; bottom: -100px; right: -200px; width: 350px; height: 210px;">
+     <a href="loyaltyrewards.html" title="Tap to view your Loyalty Rewards!" style="position: absolute; bottom: -30px; left: -400px; display: block; width: 150px; height: 150px;"><img src="img/QR.png" alt="QR Code - Loyalty Rewards" style="width: 100%; height: 100%; border-radius: 10px; border: 5px solid #ffffff; cursor: pointer; transition: transform 0.2s; display:block;"></a>
+     <h1>Salsa Rosada</h1>
+   </div>
+ </div>
 </header>
 
 
 <nav class="navbar">
-  <ul>
-    <li><a href="index.html"><img src="img/home.png" alt="Home" height="40px">Home</a></li>
-    <li><a href="menu.html"><img src="img/menu.png" alt="Menu" height="40px">Menu</a></li>
-    <li><a href="reserve.html"><img src="img/booking.png" alt="Reserve" height="40px">Reserve</a></li>
-    <li><a href="locations.html"><img src="img/pin.png" alt="Locations" height="40px">Locations</a></li>
-  </ul>
-
-
-    <!-- <nav class="navbar2" style="background-color: tomato;"> -->
-      <ul class="ul2">
-        <li><a href="account.html"><img src="img/user.png" alt="User"></a></li>
-        <li>
-          <a href="javascript:void(0)" onclick="openNav()">
-            <img src="img/bag.png" alt="Bag"><span class="span1">0</span>
-          </a>
-        </li>
-        <li><a href="#"><img src="img/find.png" alt="Search"></a></li>
-        <li><a href="pastOrders.html"><img src="img/return.png" alt="Re-Order" width="40px" height="40px"></a></li>
-      
-      </ul>
-    <!-- </nav> -->
-
-
+ <ul>
+   <li><a href="index.html"><img src="img/home.png" alt="Home" height="40px">Home</a></li>
+   <li><a href="menu.html"><img src="img/menu.png" alt="Menu" height="40px">Menu</a></li>
+   <li><a href="reserve.html"><img src="img/booking.png" alt="Reserve" height="40px">Reserve</a></li>
+   <li><a href="locations.html"><img src="img/pin.png" alt="Locations" height="40px">Locations</a></li>
+   <li><a href="loyaltyrewards.html"><img src="img/more.png" alt="Rewards" height="40px">Rewards</a></li>
+ </ul>
+ <ul class="ul2">
+   <li><a href="account.html"><img src="img/user.png" alt="User"></a></li>
+   <li>
+     <a href="javascript:void(0)" onclick="openNav()">
+       <img src="img/bag.png" alt="Bag"><span class="span1">0</span>
+     </a>
+   </li>
+   <li><a href="#"><img src="img/find.png" alt="Search"></a></li>
+   <li><a href="pastOrder.html"><img src="img/return.png" alt="Re-Order" width="40px" height="40px"></a></li>
+ </ul>
 </nav>
 
 
 <main class="page-container">
-  <h2>Welcome to our Restaurant!</h2>
-  <p>Enjoy authentic South American dishes made with love and fresh ingredients.</p>
 
 
-  <div class="content-with-image">
-    <p>
-      Our chefs bring you the flavors of South America right to your table. From the tangy ceviches of Peru
-      to the hearty feijoadas of Brazil, every dish is crafted with passion.
-      Experience a culinary journey that celebrates tradition, culture, and the joy of sharing meals with loved ones.<br><br>
-      <b>Check out our menu or reserve a table online to experience a taste of South America!</b>
+ <div class="loyalty-hero">
+   <h2>Loyalty Rewards</h2>
+   <p>Every item you order brings you closer to a free reward. Keep eating, keep earning!</p>
+ </div>
 
-    </p>
-    
-    <img src="https://thumbs.dreamstime.com/b/south-america-sketch-concept-colored-continent-shape-travel-symbols-vector-illustration-47199196.jpg"
-         alt="South America Map">
-  </div>
+
+ <!-- Points summary bar -->
+ <div class="points-bar-container">
+   <h3>Your Total Items Ordered</h3>
+   <div class="points-number" id="pointsDisplay">0</div>
+   <div class="progress-track">
+     <div class="progress-fill" id="progressFill" style="width: 0%;"></div>
+   </div>
+   <div class="progress-labels">
+     <span>0</span>
+     <span>5</span>
+     <span>15</span>
+     <span>30</span>
+     <span>50</span>
+   </div>
+   <p id="nextRewardMsg" style="margin-top:12px; color:#888; font-size:0.9rem;"></p>
+ </div>
+
+
+ <!-- Tier cards -->
+ <div class="loyalty-tiers" id="tiersGrid"></div>
+
+
+ <button class="reset-loyalty-btn" id="resetLoyalty">Reset My Points</button>
 
 
 </main>
 
 
-
-
 <div id="mySidebar" class="sidebar">
  <a href="javascript:void(0)" class="close-btn" onclick="closeNav()">×</a>
- <h2 style="text-align:center;">Your Bag<img src="img/bag.png" width="40px" height="40px" style="margin-left: 10px; bottom: 150px;" alt="Bag"></h2>
+ <h2 style="text-align:center;">Your Bag<img src="img/bag.png" width="40px" height="40px" style="margin-left: 10px;" alt="Bag"></h2>
  <div id="cartItems"></div>
  <h3 style="text-align:center;">Total: $<span id="cartTotal">0</span></h3>
  <button id="resetCart">Reset Order</button>
  <button id="purchaseBtn">Purchase</button>
 </div>
 
+
 <footer>
-  <p>&copy; 2024 Salsa Rosada. All rights reserved.</p>
+ <p>&copy; 2024 Salsa Rosada. All rights reserved.</p>
 </footer>
 
+
 <script src="script.js"></script>
+<script>
+ const tiers = [
+   {
+     emoji: "🥤",
+     name: "Bronze Reward",
+     reward: "Free Drink of your choice",
+     required: 5
+   },
+   {
+     emoji: "🫓",
+     name: "Silver Reward",
+     reward: "Free Arepa with any order",
+     required: 15
+   },
+   {
+     emoji: "🍪",
+     name: "Gold Reward",
+     reward: "Free Alfajor Dessert Box",
+     required: 30
+   },
+   {
+     emoji: "🍽️",
+     name: "Diamond Reward",
+     reward: "Free Full Meal — your pick!",
+     required: 50
+   }
+ ];
+
+
+ function renderLoyalty() {
+   const total = parseInt(localStorage.getItem('loyaltyItems')) || 0;
+   const claimed = JSON.parse(localStorage.getItem('loyaltyClaimed')) || [];
+
+
+   document.getElementById('pointsDisplay').textContent = total;
+
+
+   // Progress bar scaled to max tier (50)
+   const maxItems = tiers[tiers.length - 1].required;
+   const pct = Math.min((total / maxItems) * 100, 100);
+   document.getElementById('progressFill').style.width = pct + '%';
+
+
+   // Next reward message
+   const nextTier = tiers.find(t => total < t.required);
+   const msgEl = document.getElementById('nextRewardMsg');
+   if (nextTier) {
+     const needed = nextTier.required - total;
+     msgEl.textContent = `Order ${needed} more item${needed !== 1 ? 's' : ''} to unlock: ${nextTier.name}!`;
+     msgEl.style.color = '#888';
+     msgEl.style.fontWeight = 'normal';
+   } else {
+     msgEl.textContent = "🎉 You've unlocked ALL rewards — you're a legend!";
+     msgEl.style.color = '#df0000';
+     msgEl.style.fontWeight = 'bold';
+   }
+
+
+   // Render tier cards
+   const grid = document.getElementById('tiersGrid');
+   grid.innerHTML = '';
+
+
+   tiers.forEach(tier => {
+     const unlocked = total >= tier.required;
+     const alreadyClaimed = claimed.includes(tier.name);
+
+
+     const card = document.createElement('div');
+     card.classList.add('tier-card', unlocked ? 'unlocked' : 'locked');
+
+
+     let bottomContent = '';
+     if (unlocked && !alreadyClaimed) {
+       bottomContent = `<br><button class="claim-btn" data-name="${tier.name}">Claim Reward</button>`;
+     } else if (alreadyClaimed) {
+       bottomContent = `<br><span style="color:#888; font-size:12px; display:block; margin-top:10px;">Already claimed ✓</span>`;
+     } else {
+       const away = tier.required - total;
+       bottomContent = `<br><span style="color:#aaa; font-size:12px; display:block; margin-top:10px;">🔒 ${away} item${away !== 1 ? 's' : ''} away</span>`;
+     }
+
+
+     card.innerHTML = `
+       ${unlocked ? `<div class="unlocked-badge">✅ Unlocked</div>` : ''}
+       <span class="tier-emoji">${tier.emoji}</span>
+       <h3>${tier.name}</h3>
+       <p class="tier-reward">${tier.reward}</p>
+       <span class="tier-req">${tier.required} items</span>
+       ${bottomContent}
+     `;
+
+
+     grid.appendChild(card);
+   });
+
+
+   // Claim button listeners
+   document.querySelectorAll('.claim-btn').forEach(btn => {
+     btn.addEventListener('click', () => {
+       const name = btn.dataset.name;
+       const tier = tiers.find(t => t.name === name);
+       claimed.push(name);
+       localStorage.setItem('loyaltyClaimed', JSON.stringify(claimed));
+       alert(`🎉 Reward claimed!\n\n"${tier.reward}"\n\nShow this message to your server when you arrive. Enjoy!`);
+       renderLoyalty();
+     });
+   });
+ }
+
+
+ document.getElementById('resetLoyalty').addEventListener('click', () => {
+   if (confirm('Reset all your loyalty points and claimed rewards?')) {
+     localStorage.removeItem('loyaltyItems');
+     localStorage.removeItem('loyaltyClaimed');
+     renderLoyalty();
+   }
+ });
+
+
+ renderLoyalty();
+</script>
+
+
 </body>
 </html>

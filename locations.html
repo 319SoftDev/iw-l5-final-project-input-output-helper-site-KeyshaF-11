@@ -1,101 +1,387 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>South American Restaurant - Home</title>
-  <link rel="stylesheet" href="style.css">
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Salsa Rosada - Locations</title>
+ <link rel="stylesheet" href="style.css">
+ <style>
+   .locations-hero {
+     text-align: center;
+     padding: 24px 20px 10px;
+     max-width: 100%;
+   }
+   .locations-hero h2 { font-size: 2rem; color: #000000; }
+   .locations-hero p  { color: #555; margin-top: 6px; }
+
+
+   /* Split layout: map left, cards right */
+   .locations-layout {
+     display: grid;
+     grid-template-columns: 1fr 290px;
+     gap: 0;
+     width: 100%;
+     max-width: 100%;
+     margin: 20px 0 50px;
+     padding: 0;
+     align-items: start;
+   }
+
+
+   /* MAP column */
+   .map-col {
+     position: sticky;
+     top: 0;
+   }
+
+
+   /* Wrapper lets us stack the overlay on top of the iframe */
+   .map-wrapper {
+     position: relative;
+     width: 100%;
+     height: 650px;
+     border-radius: 0;
+     overflow: hidden;
+   }
+
+
+   .map-col iframe {
+     width: 100%;
+     height: 100%;
+     border: none;
+     display: block;
+     /* Override the broken global iframe CSS */
+     position: static !important;
+     top: auto !important;
+   }
+
+
+   /* White rectangle that covers Google's personal info strip (bottom-left) */
+   .map-cover {
+     position: absolute;
+     bottom: 0;
+     left: 0;
+     width: 220px;
+     height: 36px;
+     background: white;
+     z-index: 10;
+     border-radius: 0 8px 0 0;
+   }
+
+
+   /* CARDS column */
+   .cards-col {
+     display: flex;
+     flex-direction: column;
+     gap: 0;
+     border-radius: 0 20px 20px 0;
+     overflow: hidden;
+     box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+   }
+
+
+   /* Find nearest bar */
+   .find-bar {
+     background: #fff0f3;
+     padding: 14px 18px;
+     border-bottom: 1px solid #f5c5cf;
+   }
+   #findNearestBtn {
+     background: #df0000;
+     color: white;
+     border: none;
+     padding: 10px 0;
+     border-radius: 30px;
+     font-size: 14px;
+     cursor: pointer;
+     transition: 0.2s;
+     width: 100%;
+   }
+   #findNearestBtn:hover { background: #b00000; }
+   #nearestResult {
+     font-size: 12px;
+     color: #df0000;
+     font-weight: bold;
+     text-align: center;
+     min-height: 16px;
+     margin-top: 8px;
+   }
+
+
+   /* Location cards */
+   .location-card {
+     background: white;
+     padding: 16px 18px;
+     border-bottom: 1px solid #f5c5cf;
+     transition: background 0.2s;
+   }
+   .location-card:last-child { border-bottom: none; }
+   .location-card:hover { background: #fff8f9; }
+   .location-card.nearest {
+     background: #fff0f3;
+     border-left: 4px solid #df0000;
+   }
+
+
+   .card-top {
+     display: flex;
+     align-items: center;
+     gap: 8px;
+     margin-bottom: 8px;
+   }
+   .loc-icon { font-size: 1.4rem; }
+   .card-top h3 { font-size: 0.95rem; color: #222; margin: 0; }
+
+
+   .nearest-tag {
+     background: #df0000;
+     color: white;
+     font-size: 10px;
+     padding: 2px 8px;
+     border-radius: 20px;
+     margin-left: 4px;
+   }
+
+
+   .location-card p {
+     font-size: 0.8rem;
+     color: #555;
+     margin: 3px 0;
+     display: flex;
+     gap: 6px;
+   }
+   .location-card p .label {
+     font-weight: bold;
+     color: #333;
+     min-width: 46px;
+   }
+
+
+   .directions-btn {
+     display: inline-block;
+     margin-top: 10px;
+     padding: 5px 14px;
+     background: #ffe9ef;
+     color: #df0000;
+     border-radius: 20px;
+     font-size: 12px;
+     text-decoration: none;
+     font-weight: bold;
+     transition: 0.2s;
+   }
+   .directions-btn:hover { background: #df0000; color: white; }
+
+
+   @media(max-width: 768px) {
+     .locations-layout {
+       grid-template-columns: 1fr;
+       padding: 0 12px;
+     }
+     .map-col { position: static; }
+     .map-wrapper {
+       height: 320px;
+       border-radius: 0;
+     }
+     .cards-col { border-radius: 0 0 20px 20px; }
+   }
+ </style>
 </head>
 <body>
 
 
 <header>
-  <div class="header-container">
-
-    <img src="https://t4.ftcdn.net/jpg/04/26/77/65/360_F_426776511_4DNUnOSEzVKbtqTe8HJ4ROX664x6Q5OL.jpg" alt="Restaurant Logo">
-    <div class="title-banner">
-      <img src="img/wink.png" alt="Restaurant Logo" style="position: absolute; bottom: -100px; right: -200px; width: 350px; height: 210px;">
-      <img src="img/QR.png" alt="QR Code" style="position: absolute; bottom: -30px; left: -400px; width: 150px; height: 150px; border-radius: 10px; border: 5px solid #ffffff;">
-
-      <h1>Salsa Rosada</h1>
-    </div>
-  </div>
+ <div class="header-container">
+   <img src="https://t4.ftcdn.net/jpg/04/26/77/65/360_F_426776511_4DNUnOSEzVKbtqTe8HJ4ROX664x6Q5OL.jpg" alt="Restaurant Logo">
+   <div class="title-banner">
+     <img src="img/wink.png" alt="Restaurant Logo" style="position:absolute;bottom:-100px;right:-200px;width:350px;height:210px;">
+     <a href="loyaltyrewards.html" title="Tap to view your Loyalty Rewards!" style="position:absolute;bottom:-30px;left:-400px;display:block;width:150px;height:150px;"><img src="img/QR.png" alt="QR Code - Loyalty Rewards" style="width:100%;height:100%;border-radius:10px;border:5px solid #ffffff;cursor:pointer;display:block;"></a>
+     <h1>Salsa Rosada</h1>
+   </div>
+ </div>
 </header>
 
 
 <nav class="navbar">
-  <ul>
-    <li><a href="index.html"><img src="img/home.png" alt="Home" height="40px">Home</a></li>
-    <li><a href="menu.html"><img src="img/menu.png" alt="Menu" height="40px">Menu</a></li>
-    <li><a href="reserve.html"><img src="img/booking.png" alt="Reserve" height="40px">Reserve</a></li>
-    <li><a href="locations.html"><img src="img/pin.png" alt="Locations" height="40px">Locations</a></li>
-  </ul>
-
-
-    <!-- <nav class="navbar2" style="background-color: tomato;"> -->
-      <ul class="ul2">
-        <li><a href="account.html"><img src="img/user.png" alt="User"></a></li>
-        <li>
-          <a href="javascript:void(0)" onclick="openNav()">
-            <img src="img/bag.png" alt="Bag"><span class="span1">0</span>
-          </a>
-        </li>
-        <li><a href="#"><img src="img/find.png" alt="Search"></a></li>
-        <li><a href="pastOrder.html"><img src="img/return.png" alt="Re-Order" width="40px" height="40px"></a></li>
-      
-      </ul>
-    <!-- </nav> -->
-
-
+ <ul>
+   <li><a href="index.html"><img src="img/home.png" alt="Home" height="40px">Home</a></li>
+   <li><a href="menu.html"><img src="img/menu.png" alt="Menu" height="40px">Menu</a></li>
+   <li><a href="reserve.html"><img src="img/booking.png" alt="Reserve" height="40px">Reserve</a></li>
+   <li><a href="locations.html"><img src="img/pin.png" alt="Locations" height="40px">Locations</a></li>
+   <li><a href="loyaltyrewards.html"><img src="img/more.png" alt="Rewards" height="40px">Rewards</a></li>
+ </ul>
+ <ul class="ul2">
+   <li><a href="account.html"><img src="img/user.png" alt="User"></a></li>
+   <li>
+     <a href="javascript:void(0)" onclick="openNav()">
+       <img src="img/bag.png" alt="Bag"><span class="span1">0</span>
+     </a>
+   </li>
+   <li><a href="#"><img src="img/find.png" alt="Search"></a></li>
+   <li><a href="pastOrder.html"><img src="img/return.png" alt="Re-Order" width="40px" height="40px"></a></li>
+ </ul>
 </nav>
 
 
-<!-- class="page-container" -->
-<main >
+<main>
 
-  <iframe src="https://www.google.com/maps/d/embed?mid=1_fAYYAzhjApZjDPPPQhaO6iXP3vn3eA&ehbc=2E312F&z=10&ll=40.7483, -73.9856" width="100%" height="500px"></iframe>
-  <div class="test"></div>
-  <script>
 
-    console.log("Script loaded successfully.");
-    const getLocationButton = document.getElementById('getLocation');
-    const resultElement = document.getElementById('result');
-    getLocationButton.addEventListener('click', () => {
-    console.log("Get Location button clicked.");
-    if ("geolocation" in navigator) {
-    navigator.geolocation.getCurrentPosition((position) => {
-    const latitude = position.coords.latitude;
-    const longitude = position.coords.longitude;
-    resultElement.textContent = `Latitude: ${latitude}, Longitude: ${longitude}`;
-    console.log(`Location obtained: Latitude ${latitude}, Longitude ${longitude}`);
-    });
-    } else {
-    resultElement.textContent = "Geolocation is not supported by your browser.";
-    console.log("Geolocation is not supported by this browser.");
-    }
-    });
-  </script>
+ <div class="locations-hero">
+   <h2>Our Locations</h2>
+   <p>Find your nearest Salsa Rosada and come taste South America!</p>
+ </div>
+
+
+ <div class="locations-layout">
+
+
+   <!-- LEFT: Your original custom map -->
+   <div class="map-col">
+     <div class="map-wrapper">
+       <iframe
+         src="https://www.google.com/maps/d/embed?mid=1_fAYYAzhjApZjDPPPQhaO6iXP3vn3eA&ehbc=2E312F&z=10&ll=40.7483,-73.9856"
+         allowfullscreen
+         loading="lazy">
+       </iframe>
+       <!-- Covers Google's personal info strip in the bottom-left corner -->
+       <div class="map-cover"></div>
+     </div>
+   </div>
+
+
+   <!-- RIGHT: Find bar + location cards -->
+   <div class="cards-col">
+
+
+     <div class="find-bar">
+       <button id="findNearestBtn">Find My Nearest Location</button>
+       <p id="nearestResult"></p>
+     </div>
+
+
+     <div class="location-card" data-lat="40.75487" data-lng="-73.98398" data-name="Midtown Manhattan">
+       <div class="card-top">
+         <h3>Midtown Manhattan</h3>
+       </div>
+       <p><span class="label">Address</span>245 W 42nd St, New York, NY 10036</p>
+       <p><span class="label">Hours</span>Mon–Sun: 11am – 10pm</p>
+       <p><span class="label">Phone</span>(212) 555-0182</p>
+       <a class="directions-btn" href="https://maps.google.com/?q=245+W+42nd+St+New+York+NY" target="_blank">🗺 Get Directions</a>
+     </div>
+
+
+     <div class="location-card" data-lat="40.69202" data-lng="-73.99017" data-name="Brooklyn">
+       <div class="card-top">
+         <h3>Brooklyn</h3>
+       </div>
+       <p><span class="label">Address</span>118 Court St, Brooklyn, NY 11201</p>
+       <p><span class="label">Hours</span>Mon–Sun: 11am – 10pm</p>
+       <p><span class="label">Phone</span>(718) 555-0247</p>
+       <a class="directions-btn" href="https://maps.google.com/?q=118+Court+St+Brooklyn+NY" target="_blank">🗺 Get Directions</a>
+     </div>
+
+
+     <div class="location-card" data-lat="40.74981" data-lng="-73.89443" data-name="Jackson Heights, Queens">
+       <div class="card-top">
+         <h3>Jackson Heights, Queens</h3>
+       </div>
+       <p><span class="label">Address</span>89-02 Roosevelt Ave, Jackson Heights, NY 11372</p>
+       <p><span class="label">Hours</span>Mon–Sun: 10am – 11pm</p>
+       <p><span class="label">Phone</span>(718) 555-0391</p>
+       <a class="directions-btn" href="https://maps.google.com/?q=89-02+Roosevelt+Ave+Jackson+Heights+NY" target="_blank">🗺 Get Directions</a>
+     </div>
+
+
+     <div class="location-card" data-lat="40.85794" data-lng="-73.88271" data-name="The Bronx">
+       <div class="card-top">
+         <h3>The Bronx</h3>
+       </div>
+       <p><span class="label">Address</span>2170 White Plains Rd, Bronx, NY 10462</p>
+       <p><span class="label">Hours</span>Tue–Sun: 12pm – 9pm</p>
+       <p><span class="label">Phone</span>(718) 555-0458</p>
+       <a class="directions-btn" href="https://maps.google.com/?q=2170+White+Plains+Rd+Bronx+NY" target="_blank">🗺 Get Directions</a>
+     </div>
+
+
+   </div>
+ </div>
+
 
 </main>
 
 
-
-
 <div id="mySidebar" class="sidebar">
  <a href="javascript:void(0)" class="close-btn" onclick="closeNav()">×</a>
- <h2 style="text-align:center;">Your Bag<img src="img/bag.png" width="40px" height="40px" style="margin-left: 10px; bottom: 150px;" alt="Bag"></h2>
+ <h2 style="text-align:center;">Your Bag<img src="img/bag.png" width="40px" height="40px" style="margin-left:10px;" alt="Bag"></h2>
  <div id="cartItems"></div>
  <h3 style="text-align:center;">Total: $<span id="cartTotal">0</span></h3>
  <button id="resetCart">Reset Order</button>
  <button id="purchaseBtn">Purchase</button>
 </div>
 
+
 <footer>
-  <p>&copy; 2024 Salsa Rosada. All rights reserved.</p>
+ <p>&copy; 2024 Salsa Rosada. All rights reserved.</p>
 </footer>
 
 
-
 <script src="script.js"></script>
+<script>
+ function getDistance(lat1, lng1, lat2, lng2) {
+   const R = 3958.8;
+   const dLat = (lat2 - lat1) * Math.PI / 180;
+   const dLng = (lng2 - lng1) * Math.PI / 180;
+   const a = Math.sin(dLat/2)**2 +
+             Math.cos(lat1*Math.PI/180)*Math.cos(lat2*Math.PI/180)*Math.sin(dLng/2)**2;
+   return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+ }
+
+
+ document.getElementById('findNearestBtn').addEventListener('click', () => {
+   const resultEl = document.getElementById('nearestResult');
+   resultEl.textContent = 'Locating you...';
+
+
+   if (!('geolocation' in navigator)) {
+     resultEl.textContent = '⚠️ Geolocation not supported by your browser.';
+     return;
+   }
+
+
+   navigator.geolocation.getCurrentPosition(pos => {
+     const { latitude: uLat, longitude: uLng } = pos.coords;
+     const cards = document.querySelectorAll('.location-card');
+     let nearest = null, minDist = Infinity;
+
+
+     cards.forEach(card => {
+       const oldTag = card.querySelector('.nearest-tag');
+       if (oldTag) oldTag.remove();
+       card.classList.remove('nearest');
+
+
+       const dist = getDistance(uLat, uLng,
+         parseFloat(card.dataset.lat), parseFloat(card.dataset.lng));
+       if (dist < minDist) { minDist = dist; nearest = { card, dist, name: card.dataset.name }; }
+     });
+
+
+     if (nearest) {
+       nearest.card.classList.add('nearest');
+       const badge = document.createElement('span');
+       badge.className = 'nearest-tag';
+       badge.textContent = 'Nearest';
+       nearest.card.querySelector('h3').appendChild(badge);
+       nearest.card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+       resultEl.textContent = `${nearest.name} — ${nearest.dist.toFixed(1)} mi away`;
+     }
+   }, () => {
+     resultEl.textContent = '⚠️ Allow location access and try again.';
+   });
+ });
+</script>
+
+
 </body>
 </html>
+
+
