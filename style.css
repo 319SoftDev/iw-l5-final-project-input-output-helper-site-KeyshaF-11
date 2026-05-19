@@ -557,24 +557,16 @@ main.page-container {
 
 
   /*  NAVBAR:  */
-  .navbar {
-     display: flex;
-     flex-direction: row;
-     flex-wrap: wrap;
-     align-items: center;
-     justify-content: space-evenly;
-     padding: 8px 6px;
-     gap: 0;
-  }
+
 
 
   .navbar ul {
      display: flex;
-     flex-direction: row;
-     flex-wrap: nowrap;
-     justify-content: center;
+     flex-direction: column;
+
+     justify-content: end;
      gap: 0;
-     margin-left: 0 !important;
+     margin-left: 90% !important;
      margin-top: 0 !important;
      padding: 0;
      flex: 1;
@@ -583,8 +575,8 @@ main.page-container {
 
   .navbar ul li a {
      display: flex;
-     flex-direction: column;
-     align-items: center;
+     flex-direction: row;
+     align-items:end;
      font-size: 0;
      padding: 6px 14px;
      border-radius: 12px;
