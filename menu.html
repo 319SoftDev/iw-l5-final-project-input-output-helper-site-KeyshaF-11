@@ -11,55 +11,82 @@
 
 
 
+
+
+
+
 <header>
- <div class="header-container">
+<div class="header-container">
 
 
-   <img src="https://t4.ftcdn.net/jpg/04/26/77/65/360_F_426776511_4DNUnOSEzVKbtqTe8HJ4ROX664x6Q5OL.jpg" alt="Restaurant Logo">
-   <div class="title-banner">
-     <img src="img/wink.png" alt="Restaurant Logo" style="position: absolute; bottom: -100px; right: -200px; width: 350px; height: 210px;">
-     <a href="loyaltyrewards.html" title="Tap to view your Loyalty Rewards!" style="position: absolute; bottom: -30px; left: -400px; display: block; width: 150px; height: 150px;"><img src="img/QR.png" alt="QR Code - Loyalty Rewards" style="width: 100%; height: 100%; border-radius: 10px; border: 5px solid #ffffff; cursor: pointer; transition: transform 0.2s; display:block;"></a>
 
 
-     <h1>Salsa Rosada</h1>
-   </div>
- </div>
+  <img src="https://t4.ftcdn.net/jpg/04/26/77/65/360_F_426776511_4DNUnOSEzVKbtqTe8HJ4ROX664x6Q5OL.jpg" alt="Restaurant Logo">
+  <div class="title-banner">
+    <img src="img/wink.png" alt="Restaurant Logo" style="position: absolute; bottom: -100px; right: -200px; width: 350px; height: 210px;">
+    <a href="loyaltyrewards.html" title="Tap to view your Loyalty Rewards!" class="qr-link" style="position: absolute; bottom: -30px; left: -400px; display: block; width: 150px; height: 150px;"><img src="img/QR.png" alt="QR Code - Loyalty Rewards" style="width: 100%; height: 100%; border-radius: 10px; border: 5px solid #ffffff; cursor: pointer; transition: transform 0.2s; display:block;"></a>
+
+
+
+
+    <h1>Salsa Rosada</h1>
+  </div>
+</div>
 </header>
 
 
+
+
 <nav class="navbar">
- <ul>
-   <li><a href="index.html"><img src="img/home.png" alt="Home" height="40px">Home</a></li>
-   <li><a href="menu.html"><img src="img/menu.png" alt="Menu" height="40px">Menu</a></li>
-   <li><a href="reserve.html"><img src="img/booking.png" alt="Reserve" height="40px">Reserve</a></li>
-   <li><a href="locations.html"><img src="img/pin.png" alt="Locations" height="40px">Locations</a></li>
-   <li><a href="loyaltyrewards.html"><img src="img/more.png" alt="Rewards" height="40px">Rewards</a></li>
- </ul>
-
-
-
-
-   <!-- <nav class="navbar2" style="background-color: tomato;"> -->
-     <ul class="ul2">
-       <li><a href="account.html"><img src="img/user.png" alt="User"></a></li>
-       <li>
-         <a href="javascript:void(0)" onclick="openNav()">
-           <img src="img/bag.png" alt="Bag"><span class="span1">0</span>
-         </a>
-       </li>
-       <li><a href="#"><img src="img/find.png" alt="Search"></a></li>
-       <li><a href="pastOrder.html"><img src="img/return.png" alt="Re-Order" width="40px" height="40px"></a></li>
-    
-     </ul>
-   <!-- </nav> -->
-
-
-
-
+<ul>
+  <li><a href="index.html"><img src="img/home.png" alt="Home" height="40px">Home</a></li>
+  <li><a href="menu.html"><img src="img/menu.png" alt="Menu" height="40px">Menu</a></li>
+  <li><a href="reserve.html"><img src="img/booking.png" alt="Reserve" height="40px">Reserve</a></li>
+  <li><a href="locations.html"><img src="img/pin.png" alt="Locations" height="40px">Locations</a></li>
+  <li><a href="loyaltyrewards.html"><img src="img/more.png" alt="Rewards" height="40px">Rewards</a></li>
+</ul>
+  <ul class="ul2">
+    <li><a href="account.html"><img src="img/user.png" alt="User"></a></li>
+    <li>
+      <a href="javascript:void(0)" onclick="openNav()">
+        <img src="img/bag.png" alt="Bag"><span class="span1">0</span>
+      </a>
+    </li>
+    <li><a href="#"><img src="img/find.png" alt="Search"></a></li>
+    <li><a href="pastOrder.html"><img src="img/return.png" alt="Re-Order" width="40px" height="40px"></a></li>
+  </ul>
 </nav>
 
 
+<div class="mobile-nav">
+ <!-- Always-visible top bar: 3 quick icons + hamburger -->
+ <div class="mobile-topbar">
+   <div class="mobile-quickicons">
+     <a href="menu.html"><img src="img/menu.png" alt="Menu"><span>Menu</span></a>
+     <a href="#"><img src="img/find.png" alt="Search"></a>
+     <a href="javascript:void(0)" onclick="openNav()"><img src="img/bag.png" alt="Bag"><span class="span1">0</span></a>
+   </div>
+   <button class="hamburger" id="hamburgerBtn" aria-label="Open menu">&#9776;</button>
+ </div>
+ <!-- Slide-down menu: remaining links -->
+ <div class="mobile-menu" id="mobileMenu">
+   <a href="index.html"><img src="img/home.png" alt="">Home</a>
+   <a href="reserve.html"><img src="img/booking.png" alt="">Reserve</a>
+   <a href="locations.html"><img src="img/pin.png" alt="">Locations</a>
+   <a href="loyaltyrewards.html"><img src="img/more.png" alt="">Rewards</a>
+   <a href="account.html"><img src="img/user.png" alt="">Account</a>
+   <a href="pastOrder.html"><img src="img/return.png" alt="">Past Orders</a>
+ </div>
+</div>
+
+
+
+
 <main class="page-container">
+
+
+
+
 
 
 
@@ -69,55 +96,27 @@
 
 
 
+
+
+
+
 <div class="listProducts">
 
 
 
 
-  <div class="menu-item">
-    <img src="img/arepa.png">
-    <h3>Arepa</h3>
-    <div class="price">$3.00</div>
-    <button class="button" data-name="Arepa" data-price="3">
-      Add To Bag <img src="img/plus.png">
-    </button>
-  </div>
 
 
 
 
-  <div class="menu-item">
-    <img src="img/bandeja.png">
-    <h3>Bandeja Paisa</h3>
-    <div class="price">$14.80</div>
-    <button class="button" data-name="Bandeja Paisa" data-price="14.8">
-      Add To Bag <img src="img/plus.png">
-    </button>
-  </div>
-
-
-
-
-  <div class="menu-item">
-    <img src="img/empanada.png">
-    <h3>Empanada</h3>
-    <div class="price">$5.00</div>
-    <button class="button" data-name="Empanada" data-price="5">
-      Add To Bag <img src="img/plus.png">
-    </button>
-  </div>
-
-
-
-
-  <div class="menu-item">
-    <img src="img/bolon.jpg">
-    <h3>Bolon</h3>
-    <div class="price">$6.50</div>
-    <button class="button" data-name="Bolon" data-price="6.5">
-      Add To Bag <img src="img/plus.png">
-    </button>
-  </div>
+ <div class="menu-item">
+   <img src="img/arepa.png">
+   <h3>Arepa</h3>
+   <div class="price">$3.00</div>
+   <button class="button" data-name="Arepa" data-price="3">
+     Add To Bag <img src="img/plus.png">
+   </button>
+ </div>
 
 
 
@@ -126,6 +125,14 @@
 
 
 
+ <div class="menu-item">
+   <img src="img/bandeja.png">
+   <h3>Bandeja Paisa</h3>
+   <div class="price">$14.80</div>
+   <button class="button" data-name="Bandeja Paisa" data-price="14.8">
+     Add To Bag <img src="img/plus.png">
+   </button>
+ </div>
 
 
 
@@ -134,56 +141,132 @@
 
 
 
-  <div class="menu-item">
-    <img src="img/alfajor.png">
-    <h3>Alfajor</h3>
-    <div class="price">$3.00</div>
-    <button class="button" data-name="Alfajor" data-price="3">
-      Add To Bag <img src="img/plus.png">
-    </button>
-  </div>
+ <div class="menu-item">
+   <img src="img/empanada.png">
+   <h3>Empanada</h3>
+   <div class="price">$5.00</div>
+   <button class="button" data-name="Empanada" data-price="5">
+     Add To Bag <img src="img/plus.png">
+   </button>
+ </div>
 
 
 
 
-  <div class="menu-item">
-    <img src="img/ceviche.png">
-    <h3>Ceviche</h3>
-    <div class="price">$14.80</div>
-    <button class="button" data-name="Ceviche" data-price="14.8">
-      Add To Bag <img src="img/plus.png">
-    </button>
-  </div>
 
 
 
 
-  <div class="menu-item">
-    <img src="img/plantain.jpg">
-    <h3>Plantain Empanada</h3>
-    <div class="price">$5.00</div>
-    <button class="button" data-name="Plantain Empanada" data-price="5">
-      Add To Bag <img src="img/plus.png">
-    </button>
-  </div>
+ <div class="menu-item">
+   <img src="img/bolon.jpg">
+   <h3>Bolon</h3>
+   <div class="price">$6.50</div>
+   <button class="button" data-name="Bolon" data-price="6.5">
+     Add To Bag <img src="img/plus.png">
+   </button>
+ </div>
 
 
 
 
-  <div class="menu-item">
-    <img src="img/asado.jpg">
-    <h3>Asado</h3>
-    <div class="price">$6.50</div>
-    <button class="button" data-name="Asado" data-price="6.5">
-      Add To Bag <img src="img/plus.png">
-    </button>
-  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ <div class="menu-item">
+   <img src="img/alfajor.png">
+   <h3>Alfajor</h3>
+   <div class="price">$3.00</div>
+   <button class="button" data-name="Alfajor" data-price="3">
+     Add To Bag <img src="img/plus.png">
+   </button>
+ </div>
+
+
+
+
+
+
+
+
+ <div class="menu-item">
+   <img src="img/ceviche.png">
+   <h3>Ceviche</h3>
+   <div class="price">$14.80</div>
+   <button class="button" data-name="Ceviche" data-price="14.8">
+     Add To Bag <img src="img/plus.png">
+   </button>
+ </div>
+
+
+
+
+
+
+
+
+ <div class="menu-item">
+   <img src="img/plantain.jpg">
+   <h3>Plantain Empanada</h3>
+   <div class="price">$5.00</div>
+   <button class="button" data-name="Plantain Empanada" data-price="5">
+     Add To Bag <img src="img/plus.png">
+   </button>
+ </div>
+
+
+
+
+
+
+
+
+ <div class="menu-item">
+   <img src="img/asado.jpg">
+   <h3>Asado</h3>
+   <div class="price">$6.50</div>
+   <button class="button" data-name="Asado" data-price="6.5">
+     Add To Bag <img src="img/plus.png">
+   </button>
+ </div>
+
+
+
+
 
 
 
 
 </div>
 </main>
+
+
+
+
 
 
 
@@ -198,9 +281,15 @@
 </div>
 
 
+
+
 <footer>
- <p>&copy; 2024 Salsa Rosada. All rights reserved.</p>
+<p>&copy; 2024 Salsa Rosada. All rights reserved.</p>
 </footer>
+
+
+
+
 
 
 

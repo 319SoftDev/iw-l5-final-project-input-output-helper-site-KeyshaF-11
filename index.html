@@ -1,93 +1,137 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
- <meta charset="UTF-8">
- <meta name="viewport" content="width=device-width, initial-scale=1.0">
- <title>South American Restaurant - Home</title>
- <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>South American Restaurant - Home</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 
 
 
+
+
+
+
 <header>
- <div class="header-container">
+<div class="header-container">
 
 
-   <img src="https://t4.ftcdn.net/jpg/04/26/77/65/360_F_426776511_4DNUnOSEzVKbtqTe8HJ4ROX664x6Q5OL.jpg" alt="Restaurant Logo">
-   <div class="title-banner">
-     <img src="img/wink.png" alt="Restaurant Logo" style="position: absolute; bottom: -100px; right: -200px; width: 350px; height: 210px;">
-     <a href="loyaltyrewards.html" title="Tap to view your Loyalty Rewards!" style="position: absolute; bottom: -30px; left: -400px; display: block; width: 150px; height: 150px;"><img src="img/QR.png" alt="QR Code - Loyalty Rewards" style="width: 100%; height: 100%; border-radius: 10px; border: 5px solid #ffffff; cursor: pointer; transition: transform 0.2s; display:block;"></a>
 
 
-     <h1>Salsa Rosada</h1>
-   </div>
- </div>
+  <img src="https://t4.ftcdn.net/jpg/04/26/77/65/360_F_426776511_4DNUnOSEzVKbtqTe8HJ4ROX664x6Q5OL.jpg" alt="Restaurant Logo">
+  <div class="title-banner">
+    <img src="img/wink.png" alt="Restaurant Logo" style="position: absolute; bottom: -100px; right: -200px; width: 350px; height: 210px;">
+    <a href="loyaltyrewards.html" title="Tap to view your Loyalty Rewards!" class="qr-link" style="position: absolute; bottom: -30px; left: -400px; display: block; width: 150px; height: 150px;"><img src="img/QR.png" alt="QR Code - Loyalty Rewards" style="width: 100%; height: 100%; border-radius: 10px; border: 5px solid #ffffff; cursor: pointer; transition: transform 0.2s; display:block;"></a>
+
+
+
+
+    <h1>Salsa Rosada</h1>
+  </div>
+</div>
 </header>
 
 
 
 
+
+
+
+
 <nav class="navbar">
- <ul>
-   <li><a href="index.html"><img src="img/home.png" alt="Home" height="40px">Home</a></li>
-   <li><a href="menu.html"><img src="img/menu.png" alt="Menu" height="40px">Menu</a></li>
-   <li><a href="reserve.html"><img src="img/booking.png" alt="Reserve" height="40px">Reserve</a></li>
-   <li><a href="locations.html"><img src="img/pin.png" alt="Locations" height="40px">Locations</a></li>
-   <li><a href="loyaltyrewards.html"><img src="img/more.png" alt="Rewards" height="40px">Rewards</a></li>
- </ul>
-
-
-
-
-   <!-- <nav class="navbar2" style="background-color: tomato;"> -->
-     <ul class="ul2">
-       <li><a href="account.html"><img src="img/user.png" alt="User"></a></li>
-       <li>
-         <a href="javascript:void(0)" onclick="openNav()">
-           <img src="img/bag.png" alt="Bag"><span class="span1">0</span>
-         </a>
-       </li>
-       <li><a href="#"><img src="img/find.png" alt="Search"></a></li>
-       <li><a href="pastOrder.html"><img src="img/return.png" alt="Re-Order" width="40px" height="40px"></a></li>
-    
-     </ul>
-   <!-- </nav> -->
-
-
-
-
+<ul>
+  <li><a href="index.html"><img src="img/home.png" alt="Home" height="40px">Home</a></li>
+  <li><a href="menu.html"><img src="img/menu.png" alt="Menu" height="40px">Menu</a></li>
+  <li><a href="reserve.html"><img src="img/booking.png" alt="Reserve" height="40px">Reserve</a></li>
+  <li><a href="locations.html"><img src="img/pin.png" alt="Locations" height="40px">Locations</a></li>
+  <li><a href="loyaltyrewards.html"><img src="img/more.png" alt="Rewards" height="40px">Rewards</a></li>
+</ul>
+  <ul class="ul2">
+    <li><a href="account.html"><img src="img/user.png" alt="User"></a></li>
+    <li>
+      <a href="javascript:void(0)" onclick="openNav()">
+        <img src="img/bag.png" alt="Bag"><span class="span1">0</span>
+      </a>
+    </li>
+    <li><a href="#"><img src="img/find.png" alt="Search"></a></li>
+    <li><a href="pastOrder.html"><img src="img/return.png" alt="Re-Order" width="40px" height="40px"></a></li>
+  </ul>
 </nav>
+
+
+<div class="mobile-nav">
+ <!-- Always-visible top bar: 3 quick icons + hamburger -->
+ <div class="mobile-topbar">
+   <div class="mobile-quickicons">
+     <a href="menu.html"><img src="img/menu.png" alt="Menu"><span>Menu</span></a>
+     <a href="#"><img src="img/find.png" alt="Search"></a>
+     <a href="javascript:void(0)" onclick="openNav()"><img src="img/bag.png" alt="Bag"><span class="span1">0</span></a>
+   </div>
+   <button class="hamburger" id="hamburgerBtn" aria-label="Open menu">&#9776;</button>
+ </div>
+ <!-- Slide-down menu: remaining links -->
+ <div class="mobile-menu" id="mobileMenu">
+   <a href="index.html"><img src="img/home.png" alt="">Home</a>
+   <a href="reserve.html"><img src="img/booking.png" alt="">Reserve</a>
+   <a href="locations.html"><img src="img/pin.png" alt="">Locations</a>
+   <a href="loyaltyrewards.html"><img src="img/more.png" alt="">Rewards</a>
+   <a href="account.html"><img src="img/user.png" alt="">Account</a>
+   <a href="pastOrder.html"><img src="img/return.png" alt="">Past Orders</a>
+ </div>
+</div>
+
+
+
+
 
 
 
 
 <main class="page-container">
- <h2>Welcome to our Restaurant!</h2>
- <p>Enjoy authentic South American dishes made with love and fresh ingredients.</p>
+<h2>Welcome to our Restaurant!</h2>
+<p>Enjoy authentic South American dishes made with love and fresh ingredients.</p>
 
 
 
 
- <div class="content-with-image">
-   <p>
-     Our chefs bring you the flavors of South America right to your table. From the tangy ceviches of Peru
-     to the hearty feijoadas of Brazil, every dish is crafted with passion.
-     Experience a culinary journey that celebrates tradition, culture, and the joy of sharing meals with loved ones.<br><br>
-     <b>Check out our menu or reserve a table online to experience a taste of South America!</b>
 
 
-   </p>
-  
+
+
+<div class="content-with-image">
+  <p>
+    Our chefs bring you the flavors of South America right to your table. From the tangy ceviches of Peru
+    to the hearty feijoadas of Brazil, every dish is crafted with passion.
+    Experience a culinary journey that celebrates tradition, culture, and the joy of sharing meals with loved ones.<br><br>
+    <b>Check out our menu or reserve a table online to experience a taste of South America!</b>
+
+
+
+
+  </p>
    <img src="https://thumbs.dreamstime.com/b/south-america-sketch-concept-colored-continent-shape-travel-symbols-vector-illustration-47199196.jpg"
-        alt="South America Map">
- </div>
+       alt="South America Map">
+</div>
+
+
+
+
 
 
 
 
 </main>
+
+
+
+
+
+
+
+
 
 
 
@@ -106,13 +150,15 @@
 </div>
 
 
+
+
 <footer>
- <p>&copy; 2024 Salsa Rosada. All rights reserved.</p>
+<p>&copy; 2024 Salsa Rosada. All rights reserved.</p>
 </footer>
+
+
 
 
 <script src="script.js"></script>
 </body>
 </html>
-
-
