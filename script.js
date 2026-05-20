@@ -382,16 +382,6 @@ if(purchaseBtn){
 
 
 
-
-
-
-
-
-
-
-// =============================================
-// MOBILE HAMBURGER MENU
-// =============================================
 const hamburgerBtn = document.getElementById('hamburgerBtn');
 const mobileMenu   = document.getElementById('mobileMenu');
 

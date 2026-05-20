@@ -217,7 +217,7 @@ header img {
  font-size: 11px;
  font-weight: bold;
  position: absolute;
- top: 4px;
+ top: 25px;
  right: 4px;
  pointer-events: none;
 }
@@ -1217,15 +1217,6 @@ iframe {
 
 
 
-
-
-
-/* =============================================
-  MOBILE NAV — completely separate from desktop
-  Hidden on desktop, shown on mobile only
-  ============================================= */
-
-
 .mobile-nav {
  display: none;
 }
@@ -1301,8 +1292,8 @@ iframe {
  /* Cart badge */
  .mobile-quickicons .span1 {
    position: absolute;
-   top: 6px;
-   right: 6px;
+   top: 30px;
+   right: 11px;
    width: 18px;
    height: 18px;
    font-size: 11px;
@@ -1323,7 +1314,7 @@ iframe {
    cursor: pointer;
    border-radius: 12px;
    color: #333;
-   transition: background 0.2s, transform 0.3s;
+   transition:  0.2s, transform 0.3s;
    flex-shrink: 0;
  }
 
@@ -1358,7 +1349,7 @@ iframe {
  }
 
 
- /* Each link in the dropdown */
+
  .mobile-menu a {
    display: flex;
    flex-direction: row;
@@ -1369,7 +1360,7 @@ iframe {
    color: #333;
    font-size: 15px;
    border-bottom: 1px solid #f5d0d8;
-   transition: background 0.2s;
+   transition: 0.2s;
  }
 
 
@@ -1386,7 +1377,7 @@ iframe {
  }
 
 
- /* QR code gone on mobile */
+ /*HIDE QR CODE*/ 
  .qr-link {
    display: none !important;
  }
