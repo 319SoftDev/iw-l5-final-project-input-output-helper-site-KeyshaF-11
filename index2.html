@@ -3,40 +3,350 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>South American Restaurant - Home</title>
-<link rel="stylesheet" href="style.css">
+<title>Salsa Rosada</title>
+<style>
+ *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+
+ body {
+   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+   overflow: hidden;
+   background: #8b4f6e;
+   height: 100vh;
+   width: 100vw;
+ }
+
+
+ .splash {
+   position: relative;
+   width: 100vw;
+   height: 100vh;
+   display: flex;
+   align-items: flex-end;
+   justify-content: center;
+ }
+
+
+ .splash-bg {
+   position: absolute;
+   inset: 0;
+   width: 100%;
+   height: 100%;
+   object-fit: cover;
+   object-position: center top;
+   animation: slowZoom 9s ease forwards;
+   transform-origin: center top;
+   z-index: 1;
+ }
+
+
+ @media (min-width: 769px) {
+   .splash-bg {
+     object-fit: contain;
+     object-position: center center;
+     animation: none;
+   }
+ }
+
+
+ @keyframes slowZoom {
+   from { transform: scale(1.10); }
+   to   { transform: scale(1.0);  }
+ }
+
+
+ .overlay {
+   position: absolute;
+   inset: 0;
+   background: linear-gradient(
+     to top,
+     rgba(10,4,6,0.78) 0%,
+     rgba(10,4,6,0.20) 35%,
+     rgba(10,4,6,0.0)  60%
+   );
+   z-index: 2;
+ }
+
+
+ .deco-left, .deco-right { display: none; }
+
+
+ @media (min-width: 769px) {
+   .deco-left, .deco-right {
+     display: block;
+     position: absolute;
+     top: 0;
+     width: 18%;
+     height: 100%;
+     z-index: 6;
+     pointer-events: none;
+     overflow: hidden;
+     background-color: #4a1228;
+     background-image: repeating-linear-gradient(
+       -45deg,
+       transparent 0px, transparent 14px,
+       rgba(255,255,255,0.045) 14px, rgba(255,255,255,0.045) 15px
+     );
+   }
+
+
+   .deco-left  { left: 0; }
+   .deco-right { right: 0; }
+
+
+   .deco-left {
+     clip-path: polygon(
+       0 0, 100% 0,
+       82% 6%,  100% 12%,
+       82% 18%, 100% 24%,
+       82% 30%, 100% 36%,
+       82% 42%, 100% 48%,
+       82% 54%, 100% 60%,
+       82% 66%, 100% 72%,
+       82% 78%, 100% 84%,
+       82% 90%, 100% 96%,
+       82% 100%, 0 100%
+     );
+   }
+
+
+   .deco-right {
+     clip-path: polygon(
+       100% 0, 0 0,
+       18% 6%,  0 12%,
+       18% 18%, 0 24%,
+       18% 30%, 0 36%,
+       18% 42%, 0 48%,
+       18% 54%, 0 60%,
+       18% 66%, 0 72%,
+       18% 78%, 0 84%,
+       18% 90%, 0 96%,
+       18% 100%, 100% 100%
+     );
+   }
+
+
+   .deco-left::before {
+     content: '';
+     position: absolute;
+     top: 0; left: 0;
+     width: 6px; height: 100%;
+     background: linear-gradient(to bottom, #FFD700, #E91E63, #00BCD4, #4CAF50, #FF9800, #FFD700);
+     z-index: 1;
+   }
+
+
+   .deco-right::before {
+     content: '';
+     position: absolute;
+     top: 0; right: 0;
+     width: 6px; height: 100%;
+     background: linear-gradient(to bottom, #4CAF50, #00BCD4, #E91E63, #FFD700, #FF9800, #4CAF50);
+     z-index: 1;
+   }
+
+
+   .deco-left::after {
+     content: '';
+     position: absolute;
+     top: 0; right: 0;
+     width: 40%; height: 100%;
+     background: linear-gradient(to left, rgba(74,18,40,0) 0%, rgba(74,18,40,0.6) 100%);
+     z-index: 2;
+   }
+
+
+   .deco-right::after {
+     content: '';
+     position: absolute;
+     top: 0; left: 0;
+     width: 40%; height: 100%;
+     background: linear-gradient(to right, rgba(74,18,40,0) 0%, rgba(74,18,40,0.6) 100%);
+     z-index: 2;
+   }
+
+
+   .side-icon {
+     position: absolute;
+     font-size: var(--size, 3rem);
+     top: var(--t);
+     left: 50%;
+     transform: translateX(-50%) rotate(var(--rot, 0deg));
+     opacity: var(--op, 0.85);
+     z-index: 3;
+     animation: sideFloat var(--dur, 4s) ease-in-out infinite alternate;
+     animation-delay: var(--d, 0s);
+     filter: drop-shadow(0 3px 8px rgba(0,0,0,0.4));
+   }
+
+
+   @keyframes sideFloat {
+     from { transform: translateX(-50%) rotate(var(--rot, 0deg)) translateY(0);    }
+     to   { transform: translateX(-50%) rotate(var(--rot, 0deg)) translateY(-9px); }
+   }
+
+
+   .dot {
+     position: absolute;
+     width: var(--sz, 8px);
+     height: var(--sz, 8px);
+     border-radius: 50%;
+     background: var(--c);
+     top: var(--t);
+     left: var(--l);
+     opacity: 0.75;
+     z-index: 3;
+     animation: dotFloat var(--dur, 3s) ease-in-out infinite alternate;
+     animation-delay: var(--d, 0s);
+   }
+
+
+   @keyframes dotFloat {
+     from { transform: translateY(0);    }
+     to   { transform: translateY(-6px); }
+   }
+ }
+
+
+ .content {
+   position: relative;
+   z-index: 10;
+   text-align: center;
+   color: white;
+   width: 100%;
+   padding: 0 20px 36px;
+   animation: contentIn 1.2s cubic-bezier(0.22,1,0.36,1) 0.8s both;
+ }
+
+
+ @keyframes contentIn {
+   from { opacity: 0; transform: translateY(20px); }
+   to   { opacity: 1; transform: translateY(0);    }
+ }
+
+
+ .splash-title {
+   font-size: clamp(1.8rem, 6vw, 3.2rem);
+   font-weight: 700;
+   letter-spacing: 0.05em;
+   text-shadow: 0 2px 16px rgba(0,0,0,0.6);
+   margin-bottom: 6px;
+ }
+
+
+ .splash-sub {
+   font-size: clamp(0.75rem, 2vw, 1rem);
+   letter-spacing: 0.22em;
+   text-transform: uppercase;
+   opacity: 0.80;
+   margin-bottom: 24px;
+   text-shadow: 0 1px 8px rgba(0,0,0,0.5);
+ }
+
+
+ .enter-btn {
+   display: inline-flex;
+   align-items: center;
+   gap: 10px;
+   padding: 13px 42px;
+   background: #df0000;
+   color: white;
+   border: none;
+   border-radius: 50px;
+   font-size: 1rem;
+   font-family: inherit;
+   font-weight: 600;
+   letter-spacing: 0.06em;
+   cursor: pointer;
+   box-shadow: 0 6px 28px rgba(223,0,0,0.55);
+   transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+ }
+
+
+ .enter-btn:hover {
+   background: #b00000;
+   transform: scale(1.06);
+   box-shadow: 0 12px 38px rgba(223,0,0,0.65);
+ }
+ .enter-btn:active { transform: scale(0.97); }
+
+
+ .curtain-left, .curtain-right {
+   position: fixed;
+   top: 0; height: 100vh; width: 0;
+   background: #1a0a0e;
+   z-index: 200;
+   transition: width 0.55s cubic-bezier(0.77, 0, 0.175, 1);
+ }
+ .curtain-left  { left: 0; }
+ .curtain-right { right: 0; }
+ body.exiting .curtain-left,
+ body.exiting .curtain-right { width: 51%; }
+</style>
 </head>
 <body>
 
 
-
-<header>
-
-</header>
+<div class="curtain-left"></div>
+<div class="curtain-right"></div>
 
 
+<div class="splash">
+ <img class="splash-bg" src="img/culture.png" alt="Salsa Rosada Art">
+ <div class="overlay"></div>
 
 
-<div class="content-with-image">
-    <img src="img/culture.png" alt="South American Culture" class="side-image" style="width: 130%; height: auto; margin-right: 20px;">
+ <div class="deco-left">
+   <span class="side-icon" style="--t:5%;  --size:3.8rem; --rot:-12deg; --dur:4.2s; --d:0s;">☀️</span>
+   <span class="side-icon" style="--t:20%; --size:2.6rem; --rot:8deg;   --dur:3.8s; --d:0.6s;">🌶️</span>
+   <span class="side-icon" style="--t:36%; --size:4.2rem; --rot:-6deg;  --dur:5.1s; --d:0.2s;">🌵</span>
+   <span class="side-icon" style="--t:53%; --size:2.8rem; --rot:14deg;  --dur:3.5s; --d:1s;">🎸</span>
+   <span class="side-icon" style="--t:68%; --size:3.2rem; --rot:-9deg;  --dur:4.6s; --d:0.4s;">🥟</span>
+   <span class="side-icon" style="--t:83%; --size:2.5rem; --rot:6deg;   --dur:3.2s; --d:0.8s;">🌺</span>
+   <span class="dot" style="--c:#FFD700; --sz:10px; --t:13%; --l:20%; --dur:3.1s; --d:0.2s;"></span>
+   <span class="dot" style="--c:#00BCD4; --sz:7px;  --t:28%; --l:65%; --dur:2.8s; --d:0.7s;"></span>
+   <span class="dot" style="--c:#E91E63; --sz:9px;  --t:45%; --l:30%; --dur:3.6s; --d:0.3s;"></span>
+   <span class="dot" style="--c:#4CAF50; --sz:6px;  --t:60%; --l:70%; --dur:4.0s; --d:0.9s;"></span>
+   <span class="dot" style="--c:#FF9800; --sz:8px;  --t:76%; --l:40%; --dur:3.3s; --d:0.5s;"></span>
+   <span class="dot" style="--c:#FFD700; --sz:7px;  --t:90%; --l:55%; --dur:2.6s; --d:1.1s;"></span>
+ </div>
 
+
+ <div class="deco-right">
+   <span class="side-icon" style="--t:7%;  --size:3.8rem; --rot:10deg;  --dur:4.4s; --d:0.3s;">🦜</span>
+   <span class="side-icon" style="--t:22%; --size:2.6rem; --rot:-9deg;  --dur:3.6s; --d:0s;">🌽</span>
+   <span class="side-icon" style="--t:38%; --size:3.4rem; --rot:6deg;   --dur:4.9s; --d:0.7s;">🌺</span>
+   <span class="side-icon" style="--t:55%; --size:2.8rem; --rot:-13deg; --dur:3.3s; --d:1.1s;">☕</span>
+   <span class="side-icon" style="--t:70%; --size:3rem;   --rot:8deg;   --dur:4.3s; --d:0.2s;">🎵</span>
+   <span class="side-icon" style="--t:85%; --size:2.5rem; --rot:-5deg;  --dur:3.7s; --d:0.6s;">🌶️</span>
+   <span class="dot" style="--c:#4CAF50; --sz:9px;  --t:15%; --l:70%; --dur:3.4s; --d:0.4s;"></span>
+   <span class="dot" style="--c:#FFD700; --sz:7px;  --t:30%; --l:25%; --dur:2.9s; --d:0s;"></span>
+   <span class="dot" style="--c:#E91E63; --sz:10px; --t:47%; --l:60%; --dur:3.7s; --d:0.8s;"></span>
+   <span class="dot" style="--c:#00BCD4; --sz:6px;  --t:62%; --l:35%; --dur:4.1s; --d:0.2s;"></span>
+   <span class="dot" style="--c:#FF9800; --sz:8px;  --t:78%; --l:55%; --dur:3.0s; --d:1.0s;"></span>
+   <span class="dot" style="--c:#4CAF50; --sz:7px;  --t:92%; --l:20%; --dur:3.5s; --d:0.5s;"></span>
+ </div>
+
+
+ <div class="content">
+   <h1 class="splash-title">Salsa Rosada</h1>
+   <p class="splash-sub">Authentic South American Flavors</p>
+   <button class="enter-btn" id="enterBtn">Enter the Restaurant &nbsp;</button>
+ </div>
 </div>
 
 
-
-</main>
-
-
-
-
-
-<footer>
-<p>&copy;Salsa Rosada. All rights reserved.</p>
-</footer>
-
-
-
-
-<script src="script.js"></script>
+<script>
+ let triggered = false;
+ function enter() {
+   if (triggered) return;
+   triggered = true;
+   document.body.classList.add('exiting');
+   sessionStorage.setItem('fromSplash', '1');
+   setTimeout(() => { window.location.href = 'index.html'; }, 580);
+ }
+ document.getElementById('enterBtn').addEventListener('click', enter);
+</script>
 </body>
 </html>
+
