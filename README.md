@@ -1,3 +1,4 @@
+[![Open in Visual Studio Code](https://classroom.github.com/assets/open-in-vscode-2e0aaae1b6195c2367325f4f02e2d04e9abb55f0b24a779b69b11b9e10269abc.svg)](https://classroom.github.com/online_ide?assignment_repo_id=22408694&assignment_repo_type=AssignmentRepo)
 # Prompt
 The magic of a website comes together when a user can interact with it. The website becomes more fun, human, and helpful. Interactivity can be explained as inputs and outputs. The user inputs some information and the website reacts by giving some output back to the user.
 

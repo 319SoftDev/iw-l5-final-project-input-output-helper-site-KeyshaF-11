@@ -1,0 +1,391 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Salsa Rosada - Past Orders</title>
+<link rel="stylesheet" href="style.css">
+<style>
+ header { height: 240px; }
+ nav.navbar { align-self: start; height: auto; }
+ .header-container { height: 100%; }
+
+
+ @media(max-width: 768px) {
+   header { height: 200px; }
+   .mobile-nav { align-self: start; }
+ }
+
+
+ .orders-hero {
+   text-align: center;
+   padding: 28px 20px 10px;
+ }
+ .orders-hero h2 { font-size: 2rem; color: black; }
+ .orders-hero p  { color: #555; margin-top: 6px; }
+
+
+ .orders-container {
+   max-width: 1100px;
+   margin: 20px auto 50px;
+   padding: 0 30px;
+   display: flex;
+   flex-direction: column;
+   gap: 30px;
+ }
+
+
+ .empty-state {
+   text-align: center;
+   padding: 60px 20px;
+   color: #aaa;
+ }
+ .empty-state .empty-icon { font-size: 4rem; margin-bottom: 14px; }
+ .empty-state p { font-size: 1rem; margin-bottom: 20px; }
+ .empty-state a {
+   display: inline-block;
+   background: #df0000;
+   color: white;
+   padding: 12px 28px;
+   border-radius: 30px;
+   text-decoration: none;
+   font-size: 15px;
+   transition: 0.2s;
+ }
+ .empty-state a:hover { background: #b00000; }
+
+
+ .order-card {
+   background: white;
+   border-radius: 24px;
+   box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+   overflow: hidden;
+   transition: transform 0.2s;
+ }
+ .order-card:hover { transform: translateY(-4px); }
+
+
+ .order-header {
+   background: #fff0f3;
+   padding: 18px 28px;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   border-bottom: 1px solid #f5c5cf;
+   flex-wrap: wrap;
+   gap: 8px;
+ }
+ .order-num  { font-weight: bold; color: #df0000; font-size: 1.05rem; }
+ .order-date { font-size: 0.85rem; color: #888; margin-top: 2px; }
+ .order-total { font-size: 1.4rem; font-weight: bold; color: #222; }
+
+
+ .order-items {
+   display: grid;
+   grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+   gap: 16px;
+   padding: 24px 28px;
+ }
+
+
+ .order-item {
+   background: #fafafa;
+   border-radius: 16px;
+   overflow: hidden;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+   transition: transform 0.2s;
+ }
+ .order-item:hover { transform: translateY(-3px); }
+
+
+ .order-item img {
+   width: 100%;
+   height: 130px;
+   object-fit: cover;
+ }
+
+
+ .order-item-info {
+   padding: 12px 12px;
+   text-align: center;
+   width: 100%;
+ }
+ .order-item-info .item-name {
+   font-size: 0.88rem;
+   font-weight: bold;
+   color: #222;
+   display: block;
+   white-space: nowrap;
+   overflow: hidden;
+   text-overflow: ellipsis;
+ }
+ .order-item-info .item-qty {
+   display: inline-block;
+   background: #ffe9ef;
+   color: #df0000;
+   font-size: 12px;
+   font-weight: bold;
+   padding: 2px 10px;
+   border-radius: 20px;
+   margin: 4px 0;
+ }
+ .order-item-info .item-price {
+   font-size: 0.82rem;
+   color: #777;
+   display: block;
+ }
+
+
+ .order-footer {
+   padding: 16px 28px;
+   border-top: 1px solid #f5c5cf;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   flex-wrap: wrap;
+   gap: 10px;
+ }
+ .item-count { font-size: 0.85rem; color: #888; }
+
+
+ .reorder-btn {
+   background: #df0000;
+   color: white;
+   border: none;
+   padding: 10px 24px;
+   border-radius: 20px;
+   font-size: 14px;
+   cursor: pointer;
+   transition: 0.2s;
+ }
+ .reorder-btn:hover { background: #b00000; }
+
+
+ .clear-btn {
+   display: block;
+   margin: 0 auto 40px;
+   padding: 10px 24px;
+   background: transparent;
+   border: 2px solid #df0000;
+   color: #df0000;
+   border-radius: 12px;
+   cursor: pointer;
+   font-size: 14px;
+   transition: 0.2s;
+ }
+ .clear-btn:hover { background: #df0000; color: white; }
+
+
+ @media(max-width: 600px) {
+   .order-items { grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); }
+   .order-header { flex-direction: column; align-items: flex-start; }
+   .orders-container { padding: 0 16px; }
+ }
+</style>
+</head>
+<body>
+
+<header>
+<div class="header-container">
+ <img src="img/banner.png" alt="Restaurant Banner" style="width:100%;object-fit:cover;object-position:center; height:260px;">
+ <div class="title-banner">
+   <img src="img/wink.png" alt="Restaurant Logo" style="position:absolute;bottom:-70px;right:-200px;width:350px;height:210px;">
+   <a href="loyaltyrewards.html" title="Tap to view your Loyalty Rewards!" style="position:absolute;bottom:-40px;left:-400px;display:block;width:190px;height:190px;"><img src="img/QRcode.png" alt="QR Code - Loyalty Rewards" style="width: 100%;height:100%;cursor:pointer;display:block; margin-bottom:0px; left: -400px;"></a>
+   <h1>Salsa Rosada</h1>
+ </div>
+</div>
+</header>
+
+
+
+
+
+<nav class="navbar">
+<ul>
+  <li><a href="index2.html"><img src="img/home.png" alt="Home" height="40px">Home</a></li>
+  <li><a href="menu.html"><img src="img/menu.png" alt="Menu" height="40px">Menu</a></li>
+  <li><a href="reserve.html"><img src="img/booking.png" alt="Reserve" height="40px">Reserve</a></li>
+  <li><a href="locations.html"><img src="img/pin.png" alt="Locations" height="40px">Locations</a></li>
+  <li><a href="loyaltyrewards.html"><img src="img/badge.png" alt="Rewards" height="40px">Rewards</a></li>
+</ul>
+  <ul class="ul2">
+    <li><a href="account.html"><img src="img/user.png" alt="User"></a></li>
+    <li>
+      <a href="javascript:void(0)" onclick="openNav()">
+        <img src="img/bag.png" alt="Bag"><span class="span1">0</span>
+      </a>
+    </li>
+    <li><a href="#"><img src="img/find.png" alt="Search"></a></li>
+    <li><a href="pastOrder.html"><img src="img/return.png" alt="Re-Order" width="40px" height="40px"></a></li>
+  </ul>
+</nav>
+
+
+<div class="mobile-nav">
+ <div class="mobile-topbar">
+   <div class="mobile-quickicons">
+     <a href="index2.html"><img src="img/home.png" alt="Home"><span>Home</span></a>
+     <a href="#"><img src="img/find.png" alt="Search"></a>
+     <a href="javascript:void(0)" onclick="openNav()"><img src="img/bag.png" alt="Bag"><span class="span1">0</span></a>
+   </div>
+   <button class="hamburger" id="hamburgerBtn" aria-label="Open menu">&#9776;</button>
+ </div>
+ <div class="mobile-menu" id="mobileMenu">
+   <a href="menu.html"><img src="img/menu.png" alt="">Menu</a>
+   <a href="reserve.html"><img src="img/booking.png" alt="">Reserve</a>
+   <a href="locations.html"><img src="img/pin.png" alt="">Locations</a>
+   <a href="loyaltyrewards.html"><img src="img/badge.png" alt="">Rewards</a>
+   <a href="account.html"><img src="img/user.png" alt="">Account</a>
+   <a href="pastOrder.html"><img src="img/return.png" alt="">Past Orders</a>
+ </div>
+</div>
+
+
+<main class="page-container" style="max-width:100%; padding: 0;">
+
+
+<div class="orders-hero">
+ <h2>Past Orders</h2>
+</div>
+
+
+<div class="orders-container" id="ordersContainer"></div>
+<button class="clear-btn" id="clearHistory" style="display:none;">Clear Order History</button>
+
+
+</main>
+
+
+<div id="mySidebar" class="sidebar">
+ <a href="javascript:void(0)" class="close-btn" onclick="closeNav()">×</a>
+ <h2 style="text-align:center;">Your Bag<img src="img/bag.png" width="40px" height="40px" style="margin-left:10px;" alt="Bag"></h2>
+ <div id="cartItems"></div>
+ <h3 style="text-align:center;">Total: $<span id="cartTotal">0</span></h3>
+ <button id="resetCart">Reset Order</button>
+ <button id="purchaseBtn">Purchase</button>
+</div>
+
+
+<footer>
+ <p>&copy; Salsa Rosada. All rights reserved.</p>
+</footer>
+
+
+<script src="script.js"></script>
+<script>
+const itemImages = {
+ 'Arepa':             'img/arepa.png',
+ 'Bandeja Paisa':     'img/bandeja.png',
+ 'Empanada':          'img/empanada.png',
+ 'Bolon':             'img/bolon.jpg',
+ 'Alfajor':           'img/alfajor.png',
+ 'Ceviche':           'img/ceviche.png',
+ 'Plantain Empanada': 'img/plantain.jpg',
+ 'Asado':             'img/asado.jpg',
+};
+
+
+function getItemImage(name) {
+ return itemImages[name] || 'img/menu.png';
+}
+
+
+function renderOrders() {
+ const container = document.getElementById('ordersContainer');
+ const clearBtn  = document.getElementById('clearHistory');
+ const history   = JSON.parse(localStorage.getItem('orderHistory')) || [];
+
+
+ container.innerHTML = '';
+
+
+ if (history.length === 0) {
+   container.innerHTML = `
+     <div class="empty-state">
+       <p>No past orders yet! Your history shows up here after your first purchase.</p>
+       <a href="menu.html">Browse the Menu →</a>
+     </div>`;
+   clearBtn.style.display = 'none';
+   return;
+ }
+
+
+ clearBtn.style.display = 'block';
+
+
+ history.forEach((order, idx) => {
+   const totalItems = Object.values(order.items).reduce((s, i) => s + i.quantity, 0);
+   const card = document.createElement('div');
+   card.className = 'order-card';
+
+
+   const itemsHTML = Object.entries(order.items).map(([name, info]) => `
+     <div class="order-item">
+       <img src="${getItemImage(name)}" alt="${name}">
+       <div class="order-item-info">
+         <span class="item-name">${name}</span>
+         <span class="item-qty">x${info.quantity}</span>
+         <span class="item-price">$${(info.price * info.quantity).toFixed(2)}</span>
+       </div>
+     </div>
+   `).join('');
+
+
+   card.innerHTML = `
+     <div class="order-header">
+       <div>
+         <div class="order-num">Order #${history.length - idx}</div>
+         <div class="order-date">${order.date} at ${order.time}</div>
+       </div>
+       <div class="order-total">$${order.total.toFixed(2)}</div>
+     </div>
+     <div class="order-items">${itemsHTML}</div>
+     <div class="order-footer">
+       <span class="item-count">${totalItems} item${totalItems !== 1 ? 's' : ''}</span>
+       <button class="reorder-btn" data-id="${order.id}">🔁 Reorder</button>
+     </div>
+   `;
+
+
+   container.appendChild(card);
+ });
+
+
+ document.querySelectorAll('.reorder-btn').forEach(btn => {
+   btn.addEventListener('click', () => {
+     const order = history.find(o => o.id === parseInt(btn.dataset.id));
+     if (!order) return;
+     let currentCart = JSON.parse(localStorage.getItem('cart')) || {};
+     Object.entries(order.items).forEach(([name, info]) => {
+       if (currentCart[name]) {
+         currentCart[name].quantity += info.quantity;
+       } else {
+         currentCart[name] = { price: info.price, quantity: info.quantity };
+       }
+     });
+     localStorage.setItem('cart', JSON.stringify(currentCart));
+     alert(`✅ Items added back to your bag!`);
+     location.reload();
+   });
+ });
+}
+
+
+document.getElementById('clearHistory').addEventListener('click', () => {
+ if (confirm('Clear all your order history?')) {
+   localStorage.removeItem('orderHistory');
+   renderOrders();
+ }
+});
+
+
+renderOrders();
+</script>
+
+
+</body>
+</html>
