@@ -235,7 +235,7 @@ header img {
 
 
 main.page-container {
- padding: 40px 20px;
+ padding: 50px 80px;
  max-width: 90%;
  margin: 0 auto;
 }
@@ -602,10 +602,11 @@ main.page-container {
 
 .content-with-image {
  display: grid;
- grid-template-columns: 1fr 400px;
- gap: 20px;
+ grid-template-columns: 1fr 500px;
+ gap: 200px;
  align-items: start;
  margin-top: 20px;
+ margin-left: 200px;
 }
 
 
@@ -701,7 +702,7 @@ main.page-container {
 
 
  header .header-container > img {
-    height: 200px;
+    height: 160px !important;
  }
 
 
@@ -734,8 +735,8 @@ main.page-container {
 
 
  .title-banner > a {
-    width: 70px !important;
-    height: 70px !important;
+    width: 100px !important;
+    height: 100px !important;
     left: -48px !important;
     bottom: -12px !important;
  }
@@ -791,6 +792,9 @@ main.page-container {
 
  .content-with-image {
     grid-template-columns: 1fr;
+    margin-left: 0;
+    gap: 12px;
+
  }
 
 
